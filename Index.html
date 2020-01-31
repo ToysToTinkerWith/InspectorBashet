@@ -9,13 +9,20 @@
 </head>
 
 <body>
-  <p id="demo"></p>
 
   <form>
-  	
-  	
+  	<input type="text" name="input">
+
   </form>
-  <script src="js/test.js"></script>
+
+  <h1 id="demo"></h1>
+
+
+  <script>
+  	var in = document.getElementById('input');
+	document.getElementById('demo').innerHTML = in;
+	window.alert(in);
+  </script>
 
 </body>
 </html>
