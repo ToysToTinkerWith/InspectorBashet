@@ -9,18 +9,25 @@
 </head>
 
 <body>
-	<form>
-	<input type="text" name="input" id="input" value="wyatt">
 	
-	</form>
+	<input type="text" name="input" id = "input">
 
-	<span id="demo"></span>
-
-
+	<p id="demo"><p>
+	
 	<script>
-		var userIn = document.getElementById('input').value;
-		document.getElementById('demo').innerHTML = userIn;
-		window.alert(userIn);
+		function myFunction() {
+		var text = document.getElementById("input").value;
+		document.getElementById("demo").innerHTML = text;
+		}
+		
+		document.addEventListener('keypress', logkey);
+		
+		function logkey(e) {
+			if(e.key === 'Enter') {
+				myFunction();
+			}
+		}
+		
 	</script>
 
 </body>
