@@ -1,0 +1,17 @@
+<rooms>
+	<room>
+		<items>
+			<item>
+				<name></name>
+				<description></description>
+				<activation></activation>
+			</item>
+		</items>
+		<people>
+			<person>
+				<name></name>
+				<description></description>
+			</person>
+		</people>
+	</room>
+</rooms>
