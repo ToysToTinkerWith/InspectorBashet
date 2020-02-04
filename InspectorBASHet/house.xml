@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<house>
+    <floor number="1">
+        <room name="Grand Foyer">
+            <description>  The primary and formal entrance to the manor belonging to the beloved Mr. Gertrude. </description>
+            <connect> 
+                <adj> Wine Cellar </adj>
+                <adj> Saloon </adj>
+                <adj> Dinning Hall </adj>
+                <adj> Kitchen </adj>
+                <adj> Elevator </adj>
+            </connect>
+            <contains>
+                <item> Vase </item>
+                <item> Table </item>
+            </contains>
+        </room>
+        <room name="Wine Cellar">
+            <description> This room is the perfect place to store wine do to its good insulation and lack of windows... </description>
+            <connect> 
+                <adj> Grand Foyer</adj>
+            </connect>
+            <contains>
+                <item> </item>
+            </contains>
+        </room>
+        <room name="Saloon">
+            <description> A good place to have a refreshment and  </description>
+            <connect> 
+                <adj> Grand Foyer </adj>
+            </connect>
+            <contains>
+                <item> </item>
+            </contains>
+        </room>
+        <room name="Dinning Hall">
+            <description>  </description>
+            <connect> 
+                <adj> Grand Foyer </adj>
+            </connect>
+        </room>
+        <room name="Dinning Hall">
+            <description>  </description>
+            <connect> 
+                <adj> Grand Foyer </adj>
+            </connect>
+            <contains>
+                <item> </item>
+            </contains>
+        </room>
+        <room name="Elevator">
+            <description> A vertical transportation device that moves people or freight between floors </description>
+            <connect> 
+                <adj> Grand Foyer </adj>
+            </connect>
+            <contains>
+                <item> </item>
+            </contains>
+        </room>
+    </floor>  
+</house>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connecting>
+    <reachable from="Grand Foyer">  
+                <name> Wine Cellar  </name>
+                <name> Saloon </name>
+                <name> Kitchen </name>
+                <name> Dinning Hall </name>
+                <name> Elevator </name>
+    </reachable>
+</connecting>
