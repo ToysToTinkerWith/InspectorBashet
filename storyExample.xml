@@ -1,16 +1,17 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
 <rooms>
 	<room>
 		<items>
 			<item>
-				<name></name>
-				<description></description>
-				<activation></activation>
+				<name>blah</name>
+				<description>hey</description>
+				<activation>none</activation>
 			</item>
 		</items>
 		<people>
 			<person>
-				<name></name>
-				<description></description>
+				<name>jimmy</name>
+				<description>john</description>
 			</person>
 		</people>
 	</room>

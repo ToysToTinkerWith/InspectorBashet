@@ -13,28 +13,15 @@
 	<h1> Inspector BASHet</h1>
 	<br>
 
-	<p id="demo"><p>
+	<p id="demo"></p>
 
 	<br>
 	
 	<input type="text" id = "input">
 	
-	<script>
-		function myFunction() {
-		var text = document.getElementById("input").value;
-		document.getElementById("demo").innerHTML = text;
-		}
-		
-		document.addEventListener('keypress', logkey);
-		
-		function logkey(e) {
-			if(e.key === 'Enter') {
-				myFunction();
-				document.getElementById('input').value = "";
-			}
-		}
-		
-	</script>
+	<script src = "js/Functions.js"></script>
+	<script src = "js/Parser.js"></script>
+
 
 </body>
 </html>
