@@ -1,15 +1,4 @@
-function myFunction() {
-    var text = document.getElementById("input").value;
+function myFunction(result) {
+    var text = result;
     document.getElementById("demo").innerHTML = text;
     }
-    
-    document.addEventListener('keypress', logkey);
-    
-    function logkey(e) {
-        if(e.key === 'Enter') {
-            myFunction();
-            document.getElementById('input').value = "";
-        }
-    }
-    
-    

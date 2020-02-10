@@ -6,7 +6,7 @@
 
   <title>Inspector BASHet</title>
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  	<link href="jTerminal/css/jquery.terminal-src.css" rel="stylesheet"/> -->
+  	<link href="jTerminal/css/jquery.terminal-src.css" rel="stylesheet"/>
   	<script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
 	<script src="jTerminal/examples/dialog.js"></script>
 	<link href="jTerminal/examples/dialog.css" rel="stylesheet"/>
@@ -24,25 +24,6 @@
 		}
 	</style>
 
-    <script>
-     $(function() {
-         $('body').dialog(function(input) {
-			if (command !== null) {
-			var result = this.echo(new String(command));
-		} else {
-			this.echo('');
-			}
-		}, {
-			cols: 60,
-			rows: 20,
-			message: 'You have a case to solve',
-			title: 'Inspector BASHet',
-			height: 200,
-			prompt: 'js> '
-         });
-     });
-	</script>
-	
 	<!-- <script>
 		jQuery(function($, undefined) {
 			$('body').terminal(function(command) {
@@ -64,14 +45,37 @@
 
 <body>
 
-	<!-- <h1> Inspector BASHet</h1>
+	<h1> Inspector BASHet</h1>
 	<br>
 
 	<p id="demo"></p>
-
 	<br>
-	
-	<input type="text" id = "input"> -->
+
+	<input type="text" id = "input">
+  <p id="result"></p>
+
+  <script>
+  var result;
+
+   $(function() {
+       $('body').dialog(function(command) {
+
+    if (command !== null) {
+      result = new String(command);
+    }
+    myFunction(result);
+  }, {
+    cols: 60,
+    rows: 20,
+    message: 'You have a case to solve',
+    // title: 'Inspector BASHet',
+    height: 200,
+    prompt: 'js> '
+       });
+   });
+</script>
+
+<script src = "js/Functions.js"></script>
 
 </body>
 </html>
