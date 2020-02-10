@@ -29,34 +29,55 @@ if (input) {
 			parser = new DOMParser();
 			xmlDoc = parser.parseFromString(text,"text/xml");
 
-			document.getElementById("demo").innerHTML =
-			xmlDoc.getElementsByTagName("room")[0].attributes.getNamedItem("name").nodeValue;
-
 			let rooms = xmlDoc.getElementsByTagName("room");
+
+			var house = [];
 
 			for (var i = 0; i < rooms.length; i++){
 				var roomName = rooms[i].attributes.getNamedItem("name").nodeValue;
+				
 				console.log(roomName);
 				let items = rooms[i].getElementsByTagName("item");
+				var itemName;
+				var itemDes;
+				var itemAct;
+				var itemList = [];
 				for (var j = 0; j < items.length; j++){
-					var itemName = items[j].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+					itemName = items[j].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 					console.log(itemName);
-					var itemDes = items[j].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+					itemDes = items[j].getElementsByTagName("description")[0].childNodes[0].nodeValue;
 					console.log(itemDes);
-					var itemAct = items[j].getElementsByTagName("activation")[0].childNodes[0].nodeValue;
+					itemAct = items[j].getElementsByTagName("activation")[0].childNodes[0].nodeValue;
 					console.log(itemAct);
-				}
-				let people = rooms[i].getElementsByTagName("person");
-				for (var k = 0; k < people.length; k++){
-					var personName = people[k].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-					console.log(personName);
-					var personDes = people[k].getElementsByTagName("description")[0].childNodes[0].nodeValue;
-					console.log(personDes);
-					var personDia = people[k].getElementsByTagName("dialog")[0].childNodes[0].nodeValue;
-					console.log(personDia);
+
+					var completeItem = new Item(itemName,itemDes,itemAct);
+					itemList.push(completeItem);
 				}
 
+				let people = rooms[i].getElementsByTagName("person");
+				var personName;
+				var personDes;
+				var personDia;
+				var personList = [];
+				for (var k = 0; k < people.length; k++){
+
+
+					personName = people[k].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+					console.log(personName);
+					personDes = people[k].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+					console.log(personDes);
+					personDia = people[k].getElementsByTagName("dialog")[0].childNodes[0].nodeValue;
+					console.log(personDia);
+
+					var completePerson = new Person(personName,personDes,personDia);
+					personList.push(completePerson);
+				}
+				 
+				var completeRoom = new Room(roomName,itemList,personList);
+				house.push(completeRoom)
 			}
+
+			console.log(house);
 			
 		}
 		reader.readAsText(input.files[0]);
