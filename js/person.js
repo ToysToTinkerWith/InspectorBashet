@@ -1,8 +1,8 @@
-Class person{
+class Person{
 
-    constructor(name,descript,Dia){
+    constructor(name,descript,dia){
         this.name = name;
         this.descript = descript;
-        this.Dia = Dia;
+        this.dia = dia;
     }
 }
