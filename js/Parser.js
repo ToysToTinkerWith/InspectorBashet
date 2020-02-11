@@ -17,7 +17,7 @@ xhr.onreadystatechange = function(){
 xhr.open('GET', 'test.json', true);
 xhr.send();
 */
-
+const house = [];
 const input = document.querySelector('input[type="file"]');
 if (input) {
 	input.addEventListener('change', function(e) {
@@ -30,8 +30,6 @@ if (input) {
 			xmlDoc = parser.parseFromString(text,"text/xml");
 
 			let rooms = xmlDoc.getElementsByTagName("room");
-
-			var house = [];
 
 			for (var i = 0; i < rooms.length; i++){
 				var roomName = rooms[i].attributes.getNamedItem("name").nodeValue;
