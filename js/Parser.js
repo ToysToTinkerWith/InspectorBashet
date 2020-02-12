@@ -79,16 +79,6 @@ if (input) {
 			
 		}
 		reader.readAsText(input.files[0]);
-
-
-
-
-
-		
-
-
-
-
 		}, false)
 }
 

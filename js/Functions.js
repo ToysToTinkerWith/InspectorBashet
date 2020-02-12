@@ -32,15 +32,15 @@ function parseResult(result) {
         }
 
     }
-    if (command != null) {
-        console.log(command);
-    }
-    if (tag != null) {
-        console.log(tag);
-    }
-    if (args != null) {
-        console.log(args);
-    }
+    // if (command != null) {
+    //     console.log(command);
+    // }
+    // if (tag != null) {
+    //     console.log(tag);
+    // }
+    // if (args != null) {
+    //     console.log(args);
+    // }
 
     /*-----------------------------------*/
 
@@ -132,7 +132,6 @@ function verifyChild(childRoom, children) {
 
     return false;
 }
-
 
 // function myFunction() {
 //     var text = document.getElementById("input").value;

@@ -5,6 +5,7 @@
   <meta charset="utf-8">
 
   <title>Inspector BASHet</title>
+
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   	<link href="jTerminal/css/jquery.terminal-src.css" rel="stylesheet"/>
   	<script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
@@ -21,6 +22,14 @@
 	<style>
 		.dialog {
 			--size: 2.2;
+		}
+		body {
+			background-color: lightgrey;
+			/* text-align: center; */
+			}
+		h1 {
+			text-align: center;
+			color: darkred;
 		}
 	</style>
 
@@ -47,11 +56,9 @@
 
 	<h1> Inspector BASHet</h1>
 	<br>
-
+	<input type="file" />
 	<p id="demo"></p>
 	<br>
-
-	<input type="file" />
 
   <script>
 	//   function makeUL(array) {
@@ -72,8 +79,11 @@
 
     if (command !== null) {
       result = new String(command);
-    }
-    myFunction(result, house);
+	}
+	if (command === "Cancel") {
+		console.log("YES");
+	}
+    myFunction(result);
   }, {
     cols: 60,
     rows: 20,
@@ -91,7 +101,6 @@
 <script src = "js/Room.js"></script>
 <script src = "js/Person.js"></script>
 <script src = "js/TreeStruct.js"></script>
-
 
 </body>
 </html>
