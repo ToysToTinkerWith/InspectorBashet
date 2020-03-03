@@ -203,6 +203,7 @@
             $(this).addClass('selected active').prev()
                 .removeClass('selected active');
             settings.cancel.call(self, cmd.get());
+            alert("Can cancel");
         });
         function up() {
             setTimeout(function() {

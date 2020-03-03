@@ -1,0 +1,47 @@
+<house name = "Gertrude's Manor">
+
+    <room name = "Grand Foyer">
+        <item>
+            <name>Grand Piano</name>
+            <description>Slick black color without a blemish on it. Looks like it has never been played</description>
+            <activation>You play the only song you know, hot cross buns</activation>
+        </item>
+        <item>
+            <name>Stuffed Moose Head</name>
+            <description>The Moose eyes seem to follow you as you move around the room</description>
+            <activation>none</activation>
+        </item>
+        <person>
+            <name>Butler</name>
+            <description>Standing chest out with his arms around his back, fitted in a tux</description>
+            <dialog>"Phineas D Snout is the name, but no one every calls me that. Most just call me 'number 2'"</dialog>
+        </person>
+    </room>
+
+    <room name = “Saloon”>
+        <item> 
+            <name> Pool Table </name>
+            <description> “A standard pool table, green felt and six holes.” </description>
+            <activation> none </activation>
+        </item>
+        <item>
+            <name> Stool </name>
+            <description> “Dusty, must not have been used in a while.” </description>
+            <activation> none </activation>
+        </item>
+        <item>
+            <name> Beer </name>
+            <description> “Yup, that's beer in a mug alright.” </description>
+            <activation> ./ </activation>
+        </item>
+        <person>
+            <name> Bar Keep </name>
+            <description> “Could be a good source for information.” </description>
+            <dialog> ./ </dialog>
+        </person>
+    </room>
+
+
+
+
+</house>

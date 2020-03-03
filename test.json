@@ -1,0 +1,9 @@
+{
+	"name":"Anders",
+	"age":23,
+	"address": {
+		"street":"1151 Grant St",
+		"city":"Bellingham"
+	},
+	"children":["Wyatt", "Lucas", "Mikel"]
+}

@@ -1,0 +1,19 @@
+<house name = "Gertrude's Manor">
+<room name = "Grand Foyer">
+<item>
+<name>Grand Piano</name>
+<description>Slick black color without a blemish on it. Looks like it has never been played</description>
+<activation>You play the only song you know, hot cross buns</activation>
+</item>
+<item>
+<name>Stuffed Moose Head</name>
+<description>The Moose eyes seem to follow you as you move around the room</description>
+<activation>none</activation>
+</item>
+<person>
+<name>Butler</name>
+<description>Standing chest out with his arms around his back, fitted in a tux</description>
+<dialog>"Phineas D Snout is the name, but no one every calls me that. Most just call me 'number 2'"</dialog>
+</person>
+</room>
+</house>
