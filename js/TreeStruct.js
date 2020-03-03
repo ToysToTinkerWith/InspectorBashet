@@ -9,7 +9,7 @@ function Tree(){
 
     this.buildInitTree = function(){
 
-      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd Floor", "3rd Floor", "4th Floor", "Bedroom", "Study", "Dressing Room", "Game Room", "Armory", "Shooting Range", "Gallery", "Billiard Room", "Piano Room", "Attic", "Servants Quarters #1", "Servants Quarters #2", "Servants Quarters #3", "Maids Quarters"];
+      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd_Floor", "3rd_Floor", "4th_Floor", "Bedroom", "Study", "Dressing_Room", "Game_Room", "Armory", "Shooting_Range", "Gallery", "Billiard_Room", "Piano_Room", "Attic", "Servants_Quarters_#1", "Servants_Quarters_#2", "Servants_Quarters_#3", "Maids_Quarters"];
 
       this.nodes = nameList.map(name => new Node({name}));
 
@@ -22,27 +22,27 @@ function Tree(){
       for (var i = 0; i < this.root.children.length; i++)
         this.root.children[i].parent = this.root;
 
-      this.root.children[3].children = this.nodes.filter(node => ["2nd Floor", "3rd Floor", "4th Floor"].includes(node.name));
+      this.root.children[3].children = this.nodes.filter(node => ["2nd_Floor", "3rd_Floor", "4th_Floor"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children.length; i++)
         this.root.children[3].children[i].parent = this.root.children[3];
 
-      this.root.children[3].children[0].children = this.nodes.filter(node => ["Bedroom", "Study", "Dressing Room"].includes(node.name));
+      this.root.children[3].children[0].children = this.nodes.filter(node => ["Bedroom", "Study", "Dressing_Room"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[0].children.length; i++)
         this.root.children[3].children[0].children[i].parent = this.root.children[3].children[0];
 
-      this.root.children[3].children[1].children = this.nodes.filter(node => ["Game Room", "Armory", "Shooting Range"].includes(node.name));
+      this.root.children[3].children[1].children = this.nodes.filter(node => ["Game_Room", "Armory", "Shooting_Range"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[1].children.length; i++)
         this.root.children[3].children[1].children[i].parent = this.root.children[3].children[1];
 
-      this.root.children[3].children[2].children = this.nodes.filter(node => ["Gallery", "Billiard Room", "Piano Room", "Attic"].includes(node.name));
+      this.root.children[3].children[2].children = this.nodes.filter(node => ["Gallery", "Billiard_Room", "Piano_Room", "Attic"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[2].children.length; i++)
         this.root.children[3].children[2].children[i].parent = this.root.children[3].children[2];
 
-      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servants Quarters #1", "Servants Quarters #2", "Servants Quarters #3", "Maids Quarters"].includes(node.name));
+      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servants_Quarters_#1", "Servants_Quarters_#2", "Servants_Quarters_#3", "Maids_Quarters"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[2].children[3].children.length; i++)
         this.root.children[3].children[2].children[3].children[i].parent = this.root.children[3].children[2].children[3];

@@ -33,7 +33,7 @@ if (input) {
 
 			for (var i = 0; i < rooms.length; i++){
 				var roomName = rooms[i].attributes.getNamedItem("name").nodeValue;
-				
+
 				console.log(roomName);
 				let items = rooms[i].getElementsByTagName("item");
 				var itemName;
@@ -45,7 +45,7 @@ if (input) {
 					console.log(itemName);
 					itemDes = items[j].getElementsByTagName("description")[0].childNodes[0].nodeValue;
 					console.log(itemDes);
-					itemAct = items[j].getElementsByTagName("activation")[0].childNodes[0].nodeValue;
+					//itemAct = items[j].getElementsByTagName("activation")[0].childNodes[0].nodeValue;
 					console.log(itemAct);
 
 					var completeItem = new Item(itemName,itemDes,itemAct);
@@ -70,15 +70,14 @@ if (input) {
 					var completePerson = new Person(personName,personDes,personDia);
 					personList.push(completePerson);
 				}
-				 
+
 				var completeRoom = new Room(roomName,itemList,personList);
 				house.push(completeRoom)
 			}
 
 			console.log(house);
-			
+
 		}
 		reader.readAsText(input.files[0]);
 		}, false)
 }
-

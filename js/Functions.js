@@ -1,7 +1,7 @@
 function myFunction(result) {
     var text = parseResult(result);
     console.log(tree);
-    
+
     document.getElementById("demo").innerHTML = text;
     }
 
@@ -18,7 +18,7 @@ function parseResult(result) {
     command = splitRes[0];
 
     if (splitRes.length > 1) {
-    
+
         if (splitRes[1].charAt(0).localeCompare('-') == 0) {
             tag = splitRes[1];
         }
@@ -51,7 +51,7 @@ function parseResult(result) {
 }
 
 function executeCommands(command, tag, args) {
-    // Outputs room/story text 
+    // Outputs room/story text
     var textOutput;
 
     textOutput = associateCommands(command, tag, args);
@@ -74,14 +74,14 @@ function associateCommands(command, tag, args) {
         case "cd":
             if (args[0].localeCompare("..") == 0) {
                     currentRoom = parent;
-            } 
+            }
             else {
                 if (verifyChild(args[0], children)) {
                     currentRoom = args[0];
                 }
                 else {
                     output = "Room is not a child of current room";
-                } 
+                }
             }
             break;
         case "ls":
@@ -137,14 +137,12 @@ function verifyChild(childRoom, children) {
 //     var text = document.getElementById("input").value;
 //     document.getElementById("demo").innerHTML = text;
 //     }
-    
+
 //     document.addEventListener('keypress', logkey);
-    
+
 //     function logkey(e) {
 //         if(e.key === 'Enter') {
 //             myFunction();
 //             document.getElementById('input').value = "";
 //         }
 //     }
-    
-    
