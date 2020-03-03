@@ -33,7 +33,7 @@ if (input) {
 
 			for (var i = 0; i < rooms.length; i++){
 				var roomName = rooms[i].attributes.getNamedItem("name").nodeValue;
-				
+
 				console.log(roomName);
 				let items = rooms[i].getElementsByTagName("item");
 				var itemName;
@@ -70,15 +70,14 @@ if (input) {
 					var completePerson = new Person(personName,personDes,personDia);
 					personList.push(completePerson);
 				}
-				 
+
 				var completeRoom = new Room(roomName,itemList,personList);
 				house.push(completeRoom)
 			}
 
 			console.log(house);
-			
+
 		}
 		reader.readAsText(input.files[0]);
 		}, false)
 }
-

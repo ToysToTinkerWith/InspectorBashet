@@ -1,53 +1,39 @@
 <house name = "Gertrude's Manor">
 
-    <room name = "Grand_Foyer"></room>
-        
-    <room name = "Wine_Cellar">
-        <item>
-            <name>Wine Shelf</name>
-            <description>The entire wall is covered in dusty wine bottles, none of them   open</description>
-            <activation>You don’t have a cork popper</activation>
-        </item>
-        <item>
-             <name>Painting</name>
-            <description>Sir Gerald the first of his name, in all his glory</description>
-            <activation>none</activation>
-        </item>
-        <person>
-             <name>Wine shanty</name>
-             <description>The only person sitting at a large table, wine bottle in hand</description>
-            <dialog>”Can you get me a drink pleashhh”</dialog>
-        </person>
+    <room name = "Grand_Foyer">
     </room>
 
+   <room name = "Elevator">
+   </room>
+
     <room name = "Kitchen">
-        <item> 
+        <item>
             <name> Butcher’s Knife </name>
-            <description> “A stainless steel knife used by butchers”</description>
-            <activation> none</activation>
+            <description> “A stainless steel knife used by butchers” </description>
+            <activation> "" </activation>
         </item>
         <item>
             <name> Butternut Squash recipe</name>
             <description>  “A recipe to make a delicious meal”</description>
-            <activation> none</activation><
+            <activation> "" </activation>
         </item>
         <item>
             <name> Chef’s hat </name>
             <description>  “A hat owned by a renowned chef”</description>
-            <activation> none</activation>
+            <activation> "" </activation>
         </item>
         <person>
             <name> Head Chef Jerald</name>
-            <description> “The only man in the world to have earned 4 Michelin stars”</description>
-            <dialog> Good thing you’re not the health inspector! BAHAHA</dialog>
+            <description> “The only man in the world to have earned 4 Michelin stars” </description>
+            <dialog> Good thing you’re not the health inspector! BAHAHA. </dialog>
         </person>
     </room>
 
     <room name = "Dining_Hall">
-        <item> 
+        <item>
             <name> Dining Table </name>
             <description> “A large table set for eight people.” </description>
-            <activation> none </activation>
+            <activation> "" </activation>
         </item>
         <person>
             <name> Maid </name>
@@ -57,8 +43,140 @@
     </room>
 
     <room name=”Wine_Cellar”>
+	      <item>
+          <name>Wine Shelf</name>
+          <description>The entire wall is covered in dusty wine bottles, none of them open </description>
+          <activation> "" </activation>
+    	  </item>
+    	  <item>
+         		<name>Painting</name>
+        		<description>Sir Gerald the first of his name, in all his glory</description>
+            <activation> "" </activation>
+    	  </item>
+    	<person>
+         		<name>Wine shanty</name>
+         		<description> The only person sitting at a large table, wine bottle in hand </description>
+            <activation> "" </activation>
+        		<dialog>”Can you get me a drink pleashhh”</dialog>
+    	</person>
 	</room>
 
-    <room name = “Elevator”>
-    </room>
+<room name = “Bedroom”>
+	<item>
+<name>Bed</name>
+<description> An elaborate king sized bed with a polished wood frame
+</description>
+            <activation> "" </activation>
+</item>
+<item>
+<name>Dresser</name>
+<description> An exquisite Mahogany dresser with not a speck of dust
+</description>
+            <activation> "" </activation>
 
+</item>
+<item>
+<name>Shoe rack</name>
+<description> A multi-level shoe rack containing a diverse spectrum of novelty cowboy boots
+</description>
+</item>
+</room>
+
+<room name = “Study>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Dressing_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Game_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = "Armory">
+     <item>
+<name>Suit of Armor</name>
+<description> A full set of shiny silver plate armor from the renaissance period</description>
+     </item>
+     <item>
+        	<name>Diamond Halberd</name>
+        	<description>A decorative reconstruction of a two-handed pole weapon from the 15th century</description>
+     </item>
+     <item>
+        	<name>M60 Machine Gun</name>
+        	<description>A heavy machine gun loaded with armor-piercing rounds</description>
+     </item>
+</room>
+
+<room name = “Shooting_Range”>
+     <item>
+	<name>Kar98k Marksman Rifle</name>
+	<description> An antique looking marksman rifle with a wooden stock</description>
+     </item>
+</room>
+
+<room name = “Gallery”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Billard_Room>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Piano_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Attic”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Servant#1_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Servant#2_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Servant#3_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>
+
+<room name = “Maid’s_Room”>
+     <item>
+	<name> </name>
+	<description> </description>
+     </item>
+</room>

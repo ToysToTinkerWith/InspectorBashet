@@ -9,7 +9,7 @@ function Tree(){
 
     this.buildInitTree = function(){
 
-      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd_Floor", "3rd_Floor", "4th_Floor", "Bedroom", "Study", "Dressing Room", "Game Room", "Armory", "Shooting Range", "Gallery", "Billiard Room", "Piano Room", "Attic", "Servants Quarters #1", "Servants Quarters #2", "Servants Quarters #3", "Maids Quarters"];
+      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd_Floor", "3rd_Floor", "4th_Floor", "Bedroom", "Study", "Dressing Room", "Game Room", "Armory", "Shooting Range", "Gallery", "Billiard Room", "Piano Room", "Attic", "Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid's_Room"];
 
       this.nodes = nameList.map(name => new Node({name}));
 
@@ -42,7 +42,7 @@ function Tree(){
       for (var i = 0; i < this.root.children[3].children[2].children.length; i++)
         this.root.children[3].children[2].children[i].parent = this.root.children[3].children[2];
 
-      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servants Quarters #1", "Servants Quarters #2", "Servants Quarters #3", "Maids Quarters"].includes(node.name));
+      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid's_Room"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[2].children[3].children.length; i++)
         this.root.children[3].children[2].children[3].children[i].parent = this.root.children[3].children[2].children[3];

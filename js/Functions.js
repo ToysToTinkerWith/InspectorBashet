@@ -86,14 +86,14 @@ function associateCommands(command, tag, args) {
             break;
         case "ls":
             var room = findRoom(currentRoom);
-            if (items) {
+            if (room.items) {
               var items = room.items;
               for (var i = 0; i < items.length; i++) {
                   output = output + items[i].name + '<br />';
                   //output.push(items[i].name);
               }
             }
-            if (people) {
+            if (room.people) {
               var people = room.people;
               for (var j = 0; j < people.length; j++) {
                   output = output + people[j].name + '<br />';
