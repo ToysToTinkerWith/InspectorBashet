@@ -1806,7 +1806,57 @@
             'BACKSPACE': backspace_key,
             'SHIFT+BACKSPACE': backspace_key,
             'TAB': function() {
-                self.insert('\t');
+                if (history && command && !settings.mask &&
+                    ((is_function(settings.historyFilter) &&
+                      settings.historyFilter(command)) ||
+                     (settings.historyFilter instanceof RegExp &&
+                      command.match(settings.historyFilter)) ||
+                     !settings.historyFilter)) {
+                    history.append(command);
+                }
+                var tmp = command;
+                history.reset();
+
+                // for next input event on firefox/android with google keyboard
+                prev_command = '';
+                no_keydown = true;
+
+                //self.set('');
+
+                var splitRes = tmp.split(" ");
+                var lastCommand = splitRes[splitRes.length - 1];
+                console.log(currentRoom);
+
+                var room = findRoom(currentRoom);
+                console.log(room.name);
+                var addition;
+
+                var items = room.items;
+
+                for (var i = 0; i < items.length; i++) {
+                    addition = stringMatch(lastCommand, items[i].name);
+                    self.insert(addition);
+                }
+
+                var people = room.people;
+
+               
+                for (var j = 0; j < people.length; j++) {
+                    addition = stringMatch(lastCommand, people[j].name);
+                    self.insert(addition);
+                }
+
+                var children = getChildren(tree, currentRoom);
+
+                for (var k = 0; k < children.length; k++) {
+                    addition = stringMatch(lastCommand, children[k].name);
+                    self.insert(addition);
+                }
+
+
+
+
+                return false;
             },
             'CTRL+D': function() {
                 self['delete'](1);

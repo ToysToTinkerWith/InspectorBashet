@@ -1,19 +1,60 @@
 <house name = "Gertrude's Manor">
-<room name = "Grand Foyer">
-<item>
-<name>Grand Piano</name>
-<description>Slick black color without a blemish on it. Looks like it has never been played</description>
-<activation>You play the only song you know, hot cross buns</activation>
-</item>
-<item>
-<name>Stuffed Moose Head</name>
-<description>The Moose eyes seem to follow you as you move around the room</description>
-<activation>none</activation>
-</item>
-<person>
-<name>Butler</name>
-<description>Standing chest out with his arms around his back, fitted in a tux</description>
-<dialog>"Phineas D Snout is the name, but no one every calls me that. Most just call me 'number 2'"</dialog>
-</person>
-</room>
+    <room name = "Grand_Foyer">
+    </room>
+
+    <room name = "Wine_Cellar">
+        <item>
+            <name>Wine Shelf</name>
+            <description>The entire wall is covered in dusty wine bottles, none of them   open</description>
+            <activation>You don’t have a cork popper</activation>
+        </item>
+        <item>
+             <name>Painting</name>
+            <description>Sir Gerald the first of his name, in all his glory</description>
+            <activation>none</activation>
+        </item>
+        <person>
+             <name>Wine shanty</name>
+             <description>The only person sitting at a large table, wine bottle in hand</description>
+            <dialog>”Can you get me a drink pleashhh”</dialog>
+        </person>
+    </room>
+
+    <room name = "Kitchen">
+        <item>
+            <name>Butcher's Knife</name>
+            <description>A stainless steel knife used by butchers</description>
+            <activation>none</activation>
+        </item>
+        <item>
+             <name>Butternut Squash recipe</name>
+            <description>A recipe to make a delicious meal</description>
+            <activation>none</activation>
+        </item>
+         <item>
+            <name>Chef’s hat</name>
+            <description>A hat owned by a renowned chef</description>
+            <activation>none</activation>
+        </item>
+        <person>
+             <name>Head Chef Jerald</name>
+             <description>The only man in the world to have earned 4 Michelin stars</description>
+            <dialog>"Good thing you’re not the health inspector! BAHAHA"</dialog>
+        </person>
+    </room>
+
+    <room name = "Dining_Hall">
+        <item>
+            <name> Dining Table </name>
+            <description> “A large table set for eight people.” </description>
+            <activation> "" </activation>
+        </item>
+        <person>
+            <name> Maid </name>
+            <description>“From dusting to vacuuming, maids are professionals hired to keep home” </description>
+            <dialog> Dinner will be ready soon, come back then. </dialog>
+        </person>
+    </room>
+
+
 </house>

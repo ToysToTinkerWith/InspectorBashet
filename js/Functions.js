@@ -129,7 +129,7 @@ function findRoom(roomName) {
 
 function verifyChild(childRoom, children) {
     for (var i = 0; i < children.length; i++) {
-        if (children[i].name.localeCompare(childRoom)) {
+        if (children[i].name.localeCompare(childRoom)) {    
             return true;
         }
     }
@@ -137,16 +137,14 @@ function verifyChild(childRoom, children) {
     return false;
 }
 
-// function myFunction() {
-//     var text = document.getElementById("input").value;
-//     document.getElementById("demo").innerHTML = text;
-//     }
+function stringMatch(part, full) {
+    var charPart = part.split("");
+    var charFull = full.split("");
 
-//     document.addEventListener('keypress', logkey);
-
-//     function logkey(e) {
-//         if(e.key === 'Enter') {
-//             myFunction();
-//             document.getElementById('input').value = "";
-//         }
-//     }
+    for (var i = 0; i < charPart.length; i++){
+        if(charPart[i] != charFull[i]) {
+            return "";
+        }
+    }
+    return full.substr(i);
+}
