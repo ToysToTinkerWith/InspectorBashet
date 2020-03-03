@@ -1,7 +1,7 @@
 function myFunction(result) {
     var text = parseResult(result);
     console.log(tree);
-    
+
     document.getElementById("demo").innerHTML = text;
     }
 
@@ -18,7 +18,7 @@ function parseResult(result) {
     command = splitRes[0];
 
     if (splitRes.length > 1) {
-    
+
         if (splitRes[1].charAt(0).localeCompare('-') == 0) {
             tag = splitRes[1];
         }
@@ -51,7 +51,7 @@ function parseResult(result) {
 }
 
 function executeCommands(command, tag, args) {
-    // Outputs room/story text 
+    // Outputs room/story text
     var textOutput;
 
     textOutput = associateCommands(command, tag, args);
@@ -74,27 +74,31 @@ function associateCommands(command, tag, args) {
         case "cd":
             if (args[0].localeCompare("..") == 0) {
                     currentRoom = parent;
-            } 
+            }
             else {
                 if (verifyChild(args[0], children)) {
                     currentRoom = args[0];
                 }
                 else {
                     output = "Room is not a child of current room";
-                } 
+                }
             }
             break;
         case "ls":
             var room = findRoom(currentRoom);
-            var items = room.items;
-            for (var i = 0; i < items.length; i++) {
-                output = output + items[i].name + '<br />';
-                //output.push(items[i].name);
+            if (items) {
+              var items = room.items;
+              for (var i = 0; i < items.length; i++) {
+                  output = output + items[i].name + '<br />';
+                  //output.push(items[i].name);
+              }
             }
-            var people = room.people;
-            for (var j = 0; j < people.length; j++) {
-                output = output + people[j].name + '<br />';
-                //output.push(people[j].name);
+            if (people) {
+              var people = room.people;
+              for (var j = 0; j < people.length; j++) {
+                  output = output + people[j].name + '<br />';
+                  //output.push(people[j].name);
+              }
             }
             for (var k = 0; k < children.length; k++) {
                 output = output + children[k].name + '<br />';
@@ -114,7 +118,7 @@ function findRoom(roomName) {
 
     for(var i = 0; i < house.length; i++) {
         if (house[i].name.localeCompare(roomName) == 0) {
-            console.log(house[i]);
+            console.log("FOUND " + house[i].name);
             return house[i];
         }
     }
@@ -137,14 +141,12 @@ function verifyChild(childRoom, children) {
 //     var text = document.getElementById("input").value;
 //     document.getElementById("demo").innerHTML = text;
 //     }
-    
+
 //     document.addEventListener('keypress', logkey);
-    
+
 //     function logkey(e) {
 //         if(e.key === 'Enter') {
 //             myFunction();
 //             document.getElementById('input').value = "";
 //         }
 //     }
-    
-    
