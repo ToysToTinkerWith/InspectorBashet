@@ -7,6 +7,38 @@
  *
  * Linceses under MIT license
  */
+ #file-input{
+   left:24.5%;
+   top:10%;
+   position:absolute;
+ }
+#title-bashet{
+  /* text-shadow: 2px 2px 5px black; */
+}
+ #bashet-sprite{
+   position:absolute;
+   top:-22%;
+   left:50%;
+   width:40%;
+   height:auto;
+   /* box-shadow: 10px 10px 5px grey; */
+
+ }
+
+ #demo{
+   position:absolute;
+   background-color: #000;
+   /* background-size: 300px 30px; */
+   width:50%;
+   height:30%;
+   left:24.5%;
+   border-style:solid;
+   color:#fff;
+   border-color: #AAAAAA;
+   border-width:thick;
+   padding: 5px 5px 10px 10px;
+   box-shadow: 10px 10px 5px grey;
+ }
 .dialog {
     /* background-color: #00a; */
     position: relatieve;
@@ -40,11 +72,13 @@
     background-color: #aaa;
     float: left;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
+    box-shadow: 10px 10px 5px grey;
+
     transform: translate(-50%, -50%);
-    -webkit-box-shadow: calc(var(--char-width) * 2px) calc(var(--char-width) * 2px) black;
-    box-shadow: calc(var(--char-width) * 2px) calc(var(--char-width) * 2px) black;
+    /* -webkit-box-shadow: calc(var(--char-width) * 2px) calc(var(--char-width) * 2px) black;
+    box-shadow: calc(var(--char-width) * 2px) calc(var(--char-width) * 2px) black; */
 }
 .dialog .box .light {
     color: #fff;
