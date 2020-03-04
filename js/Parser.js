@@ -79,5 +79,6 @@ if (input) {
 
 		}
 		reader.readAsText(input.files[0]);
+		document.getElementById("fileInput").style.visibility = 'hidden';
 		}, false)
 }

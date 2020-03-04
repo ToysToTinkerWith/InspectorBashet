@@ -1823,35 +1823,73 @@
 
                 //self.set('');
 
-                var splitRes = tmp.split(" ");
+                var splitRes = tmp.split(/\s+/);
                 var lastCommand = splitRes[splitRes.length - 1];
-                console.log(currentRoom);
 
                 var room = findRoom(currentRoom);
-                console.log(room.name);
                 var addition;
+                var temp;
+                var done = 0;
 
                 var items = room.items;
 
                 for (var i = 0; i < items.length; i++) {
-                    addition = stringMatch(lastCommand, items[i].name);
-                    self.insert(addition);
+                    if(done == 0){
+                        temp = stringMatch(lastCommand, items[i].name);
+                        if(temp.length != 0) {
+                            addition = temp;
+                            done = 1;
+                        }
+                    }
+                    else if(done == 1) {    
+                        temp = stringMatch(lastCommand, items[i].name);
+                        if(temp.length != 0) {
+                            addition = "";
+                            done = 2;
+                        }
+                    }
                 }
 
                 var people = room.people;
 
                
                 for (var j = 0; j < people.length; j++) {
-                    addition = stringMatch(lastCommand, people[j].name);
-                    self.insert(addition);
+                    if(done == 0){
+                        temp = stringMatch(lastCommand, people[j].name);
+                        if(temp.length != 0) {
+                            addition = temp;
+                            done = 1;
+                        }
+                    }
+                    else if(done == 1) {    
+                        temp = stringMatch(lastCommand, people[j].name);
+                        if(temp.length != 0) {
+                            addition = "";
+                            done = 2;
+                        }
+                    }
                 }
 
                 var children = getChildren(tree, currentRoom);
 
                 for (var k = 0; k < children.length; k++) {
-                    addition = stringMatch(lastCommand, children[k].name);
-                    self.insert(addition);
+                    if(done == 0){
+                        temp = stringMatch(lastCommand, children[k].name);
+                        if(temp.length != 0) {
+                            addition = temp;
+                            done = 1;
+                        }
+                    }
+                    else if(done == 1) {    
+                        temp = stringMatch(lastCommand, children[k].name);
+                        if(temp.length != 0) {
+                            addition = "";
+                            done = 2;
+                        }
+                    }
                 }
+                
+                self.insert(addition);
 
 
 

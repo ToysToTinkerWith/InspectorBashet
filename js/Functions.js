@@ -1,3 +1,8 @@
+var evidenceFolder;
+var hasFoundKey = false;
+var hasMadeEvidence = false;
+var inEvidence = false;
+
 function myFunction(result) {
     var text = parseResult(result);
     console.log(tree);
@@ -70,42 +75,126 @@ function associateCommands(command, tag, args) {
 
     var parent = getParent(tree, currentRoom);
 
+    var room = findRoom(currentRoom);
+
     switch(command) {
         case "cd":
             if (args[0].localeCompare("..") == 0) {
+                if(currentRoom.localeCompare("Grand_Foyer") != 0) {
                     currentRoom = parent;
+                }
+                else if (inEvidence) {
+                    inEvidence = false;
+                }
             }
             else {
                 if (verifyChild(args[0], children)) {
                     currentRoom = args[0];
                 }
-                else {
+                else if (args[0].localeCompare(evidenceFolder.name) != 0) {
                     output = "Room is not a child of current room";
+                }
+            }
+            if (hasFoundKey) {
+                if (args[0].localeCompare(evidenceFolder.name) == 0) {
+                    inEvidence = true;
+                    for (var i = 0; i < evidenceFolder.items.length; i++) {
+                        output = output + '<br />' + evidenceFolder.items[i].name;                    }
                 }
             }
             break;
         case "ls":
-            var room = findRoom(currentRoom);
             if (room.items) {
               var items = room.items;
               for (var i = 0; i < items.length; i++) {
                   output = output + items[i].name + '<br />';
-                  //output.push(items[i].name);
               }
             }
             if (room.people) {
               var people = room.people;
               for (var j = 0; j < people.length; j++) {
                   output = output + people[j].name + '<br />';
-                  //output.push(people[j].name);
               }
             }
             for (var k = 0; k < children.length; k++) {
                 output = output + children[k].name + '<br />';
-                //output.push(people[j].name);
+            }
+            if (hasMadeEvidence) {
+                output = output + '<br />' + evidenceFolder.name + '<br />';
             }
 
             break;
+        case "touch":
+            if (room.items) {
+                var items = room.items;
+                if(args[0]) {
+                    for (var i = 0; i < items.length; i++) {
+                        if(args[0].localeCompare(items[i].name) == 0) {
+                            output = output + items[i].descript + '<br />' 
+                            if (items[i].act.localeCompare(" none ") == 0) {
+                                output = output + "Nothing special about this thing" + '<br />';
+                            } 
+                            else {
+                                output = output + items[i].act + '<br />';
+
+                                if (items[i].name.localeCompare("Spring_Terror") == 0) {
+                                    var key = new Item("Key", "Seems like it might unlock something..", "This might be useful");
+                                    room.items.push(key);
+                                    hasFoundKey = true;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    if (room.people) {
+                        var people = room.people;
+                            for (var i = 0; i < people.length; i++) {
+                                if(args[0].localeCompare(people[i].name) == 0) {
+                                    output = output + "Hey! Don't touch me! <br />";
+                                }
+                            }
+                    }
+                }
+            }
+            break;
+
+        case "echo":
+            if (room.people) {
+                var people = room.people;
+                if(args[0]) {
+                    for (var i = 0; i < people.length; i++) {
+                        if(args[0].localeCompare(people[i].name) == 0) {
+                            output = output + people[i].descript + '<br />' + people[i].dia + '<br />';
+                        }
+                    }
+                }
+            }
+            break;
+
+        case "mkdir":
+            if (!hasMadeEvidence) {
+                // var tempItemList;
+                evidenceFolder = new Room(args[0], [], []);
+                hasMadeEvidence = true;
+            }
+            break;
+
+        case "mv":
+            var item = args[0];
+
+            // Remove from current room
+            if (room.items) {
+                var items = room.items;
+                for (var i = 0; i < items.length; i++) {
+                    if(item.localeCompare(items[i].name) == 0) {
+                        evidenceFolder.items.push(items[i]);
+                        room.items.splice(i,1);
+                    }
+                }
+            }
+            // Add to folder
+            break;
+
         default:
             return "Could not recognize command";
 
@@ -118,7 +207,6 @@ function findRoom(roomName) {
 
     for(var i = 0; i < house.length; i++) {
         if (house[i].name.localeCompare(roomName) == 0) {
-            console.log("FOUND " + house[i].name);
             return house[i];
         }
     }
@@ -129,7 +217,7 @@ function findRoom(roomName) {
 
 function verifyChild(childRoom, children) {
     for (var i = 0; i < children.length; i++) {
-        if (children[i].name.localeCompare(childRoom)) {    
+        if (children[i].name.localeCompare(childRoom) == 0) {    
             return true;
         }
     }
@@ -141,10 +229,15 @@ function stringMatch(part, full) {
     var charPart = part.split("");
     var charFull = full.split("");
 
+    if (charPart.length == 0) {
+        return "";
+    }
+
     for (var i = 0; i < charPart.length; i++){
         if(charPart[i] != charFull[i]) {
             return "";
         }
     }
+
     return full.substr(i);
 }

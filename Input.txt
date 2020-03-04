@@ -8,12 +8,12 @@
     
     <room name = "Wine_Cellar">
         <item>
-            <name> Wine Shelf </name>
+            <name>Wine_Shelf</name>
             <description> The entire wall is covered in dusty wine bottles, none of them open </description>
             <activation> You don’t have a cork popper </activation>
         </item>
         <item>
-             <name> Painting </name>
+             <name>Painting</name>
             <description> Sir Gerald the first of his name, in all his glory </description>
             <activation> none </activation>
         </item>
@@ -21,22 +21,22 @@
 
     <room name = "Kitchen">
         <item>
-            <name> Butcher's Knife </name>
+            <name>Butchers_Knife</name>
             <description> A stainless steel knife used by butchers </description>
             <activation> none </activation>
         </item>
         <item>
-             <name> Butternut Squash recipe </name>
-            <description> A recipe to make a delicious meal </description>
-            <activation> none </activation>
+             <name>Butternut_Squash_Recipe</name>
+            <description> "A recipe to make a delicious meal" </description>
+            <activation> "none" </activation>
         </item>
          <item>
-            <name> Chef’s hat </name>
+            <name>Chefs_Hat</name>
             <description> A hat owned by a renowned chef </description>
             <activation> none </activation>
         </item>
         <person>
-             <name> Head Chef Jerald </name>
+             <name>Head_Chef_Jerald</name>
              <description> The only man in the world to have earned 4 Michelin stars </description>
             <dialog> "Good thing you’re not the health inspector! BAHAHA" </dialog>
         </person>
@@ -44,30 +44,30 @@
 
     <room name = "Dining_Hall">
         <item>
-            <name> Dining Table </name>
+            <name>Dining_Table</name>
             <description> A large table set for eight people. </description>
             <activation> none </activation>
         </item>
         <person>
-            <name> Maid </name>
-            <description> “From dusting to vacuuming, maids are professionals hired to keep home” </description>
-            <dialog> Dinner will be ready soon, come back then. </dialog>
+            <name>Maid</name>
+            <description> From dusting to vacuuming, maids are professionals hired to keep home </description>
+            <dialog> "We would talk often about her paintings. I know she really liked ‘Spring Terror’" </dialog>
         </person>
     </room>
 
     <room name = "Bedroom">
         <item>
-            <name> Bed </name>
+            <name>Bed</name>
             <description> An elaborate king sized bed with a polished wood frame </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Dresser </name>
+            <name>Dresser</name>
             <description> An exquisite Mahogany dresser with not a speck of dust </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Shoe rack </name>
+            <name>Shoe_rack</name>
             <description> A multi-level shoe rack containing a diverse spectrum of novelty cowboy boots </description>
             <activation> none </activation>
         </item>
@@ -75,17 +75,17 @@
 
     <room name = "Study">
         <item>
-            <name> Desk </name>
+            <name>Desk</name>
             <description> A hard wood writing desk topped with quality parchment</description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Bookshelf </name>
+            <name>Bookshelf</name>
             <description> A tall wooden bookshelf containing works of all subject matters </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Chair </name>
+            <name>Chair</name>
             <description> A comfortable looking black leather chair </description>
             <activation> none </activation>
         </item>
@@ -93,17 +93,17 @@
 
     <room name = "Dressing_Room">
         <item>
-            <name> Clothing rack</name>
+            <name>Clothing_Rack</name>
             <description> A long metallic clothing rack lined with countless articles of designer clothing </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Vanity Table Set</name>
+            <name>Vanity_Table_Set</name>
             <description> A wooden vanity table with a round mirror and cushioned stool </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Clothed Mannequin</name>
+            <name>Clothed_Mannequin</name>
             <description> A female mannequin showcasing an oversized fur coat</description>
             <activation> none </activation>
         </item>
@@ -111,17 +111,17 @@
 
     <room name = "Game_Room">
         <item>
-            <name> Grizzly Bear Rug </name>
+            <name>Grizzly_Bear_Rug</name>
             <description> A furry rug made from the pelt of a grizzly bear </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Stuffed Tiger Head </name>
+            <name>Stuffed_Tiger_Head</name>
             <description> The stuffed head of a Bengal tiger mounted on a wall </description>
             <activation> none </activation>
         </item>
         <item>
-            <name>Stuffed Moose Head</name>
+            <name>Stuffed_Moose_Head</name>
             <description> The Moose eyes seem to follow you as you move around the room </description>
             <activation> none </activation>
         </item>
@@ -130,17 +130,17 @@
 
     <room name = "Armory">
         <item>
-            <name> Suit of Armor </name>
+            <name>Suit_of_Armor</name>
             <description> A full set of shiny silver plate armor from the renaissance period </description>
             <activation> none </activation>
         </item>
             <item>
-            <name> Diamond Halberd </name>
+            <name>Diamond_Halberd</name>
             <description> A decorative reconstruction of a two-handed pole weapon from the 15th century </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> M60 Machine Gun </name>
+            <name>M60_Machine_Gun</name>
             <description> A heavy machine gun loaded with armor-piercing rounds </description>
             <activation> none </activation>
         </item>
@@ -148,17 +148,17 @@
 
     <room name = "Shooting_Range">
         <item>
-            <name> Kar98k Marksman Rifle </name>
+            <name>Kar98k_Marksman_Rifle</name>
             <description> An antique looking marksman rifle with a wooden stock </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Wall mounted paper target </name>
+            <name>Wall_Mounted_Paper_Target</name>
             <description> Whoever was shooting this target got several bullseyes </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Ammunition box </name>
+            <name>Ammunition_box</name>
             <description> Metallic ammunitions box painted military green </description>
             <activation> none </activation>
         </item>
@@ -166,24 +166,22 @@
 
     <room name = "Gallery">
         <item>
-            <name> Spring Terror </name>
+            <name>Spring_Terror</name>
             <description> A couple running from a forest fire</description>
-            <activation> As you look at this painting, you notice it's not quite flat on the wall.
-            You inspect behind it to reveal a key attached to the back
-            </activation>
+            <activation> As you look at this painting, you notice it's not quite flat on the wall. You inspect behind it to reveal a key attached to the back </activation>
         </item>
         <item>
-            <name> Autumn Dance </name>
+            <name>Autumn_Dance</name>
             <description> Colored leaves spinning in the stormy winds </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Summer Veil </name>
+            <name>Summer_Veil</name>
             <description> An early sunrise shining over the mountain sky </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Came the Winter </name>
+            <name>Came_the_Winter</name>
             <description> A family of deer finding refuge from a blizzard </description>
             <activation> none </activation>
         </item>
@@ -191,40 +189,40 @@
 
     <room name = "Piano_Room">
         <item>
-            <name>Grand Piano</name>
+            <name>Grand_Piano</name>
             <description> Slick black color without a blemish on it. Looks like it has never been played </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Cushioned bench </name>
+            <name>Cushioned_bench</name>
             <description> A wooden bench padded with a red velvet cushion </description>
             <activation> none </activation>
         </item
     </room>
 
-    <room name = "Billiard Room">
+    <room name = "Billiard_Room">
         <item>
-            <name> Pool Table </name>
+            <name>Pool_Table</name>
             <description> A standard pool table, green felt and six holes </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Beer </name>
+            <name>Beer</name>
             <description> Yup, that's beer in a mug alright </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Stick#1 </name>
+            <name>Stick#1</name>
             <description> Simple wooden pool stick </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Stick#2 </name>
+            <name>Stick#2</name>
             <description> Simple wooden pool stick </description>
             <activation> none </activation>
         </item>
         <item>
-            <name> Stick#3 </name>
+            <name>Stick#3</name>
             <description> Simple wooden pool stick, although something seems strange about it.. </description>
             <activation> It looks as if the handle is a fingerprint scanner... </activation>
         </item>
@@ -232,7 +230,7 @@
 
     <room name = "Servant#1_Room">
         <item>
-            <name> Sleeping Bag </name>
+            <name>Sleeping_Bag</name>
             <description> A cozy place for the servant to sleep </description>
             <activation> none </activation>
         </item>
@@ -240,7 +238,7 @@
 
     <room name = "Servant#2_Room">
         <item>
-            <name> Sleeping Bag </name>
+            <name>Sleeping_Bag</name>
             <description> A cozy place for the servant to sleep </description>
             <activation> none </activation>
         </item>
@@ -248,7 +246,7 @@
 
     <room name = "Servant#3_Room">
         <item>
-            <name> Sleeping Bag </name>
+            <name>Sleeping_Bag</name>
             <description> A cozy place for the servant to sleep </description>
             <activation> none </activation>
         </item>
@@ -256,7 +254,7 @@
 
     <room name = "Maid’s_Room">
         <item>
-            <name> Sleeping Bag </name>
+            <name>Sleeping_Bag</name>
             <description> A cozy place for the maid to sleep </description>
             <activation> none </activation>
         </item>

@@ -51,8 +51,8 @@
         </item>
         <person>
             <name> Maid </name>
-            <description>“From dusting to vacuuming, maids are professionals hired to keep home” </description>
-            <dialog> Dinner will be ready soon, come back then. </dialog>
+            <description> From dusting to vacuuming, maids are professionals hired to keep home </description>
+            <dialog> "“We would talk often about her paintings. I know she really liked ‘Spring Terror’" </dialog>
         </person>
     </room>
 

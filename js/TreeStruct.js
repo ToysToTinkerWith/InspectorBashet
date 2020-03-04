@@ -70,11 +70,18 @@ if (roomName.localeCompare("Grand_Foyer") != 0) {
       return tree.nodes[i].parent.name;
     }
   }
-}
-else {
+} else {
     return [];
 }
 }
+
+// function setParent(room, parentRoomName, tree) {
+//   for(var i = 0; i < tree.nodes.length; i++){
+//     if(parentRoomName == tree.nodes[i].name){
+//       tree.nodes[i]
+//     }
+//   }
+// }
 
 function getChildren(tree, roomName){
     if (!isLeaf(tree, roomName)){

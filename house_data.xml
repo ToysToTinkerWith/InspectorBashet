@@ -38,7 +38,7 @@
 </person>
 </room>
 
-<room name=”Wine_Cellar”>
+<room name = ”Wine_Cellar”>
 <item>
 <name>Wine Shelf</name>
 <description>The entire wall is covered in dusty wine bottles, none of them open
@@ -66,6 +66,7 @@
 <name>Dresser</name>
 <description> An exquisite Mahogany dresser with not a speck of dust
 </description>
+
 </item>
 <item>
 <name>Shoe rack</name>
