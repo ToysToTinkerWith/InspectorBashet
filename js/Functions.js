@@ -2,6 +2,9 @@ var evidenceFolder;
 var hasFoundKey = false;
 var hasMadeEvidence = false;
 var inEvidence = false;
+var hasKey = false;
+var hasLetterFirst = false;
+var hasLetterSecond = false;
 
 function myFunction(result) {
     var text = parseResult(result);
@@ -95,12 +98,12 @@ function associateCommands(command, tag, args) {
                     output = "Room is not a child of current room";
                 }
             }
-            if (hasFoundKey) {
-                if (args[0].localeCompare(evidenceFolder.name) == 0) {
-                    inEvidence = true;
-                    for (var i = 0; i < evidenceFolder.items.length; i++) {
-                        output = output + '<br />' + evidenceFolder.items[i].name;                    }
-                }
+            if (hasMadeEvidence) {
+              if (args[0].localeCompare(evidenceFolder.name) == 0) {
+                  inEvidence = true;
+                  for (var i = 0; i < evidenceFolder.items.length; i++) {
+                      output = output + evidenceFolder.items[i].name + '<br />';                    }
+              }
             }
             break;
         case "ls":
@@ -130,15 +133,15 @@ function associateCommands(command, tag, args) {
                 if(args[0]) {
                     for (var i = 0; i < items.length; i++) {
                         if(args[0].localeCompare(items[i].name) == 0) {
-                            output = output + items[i].descript + '<br />' 
+                            output = output + items[i].descript + '<br />' + '<br />';
                             if (items[i].act.localeCompare(" none ") == 0) {
                                 output = output + "Nothing special about this thing" + '<br />';
-                            } 
+                            }
                             else {
                                 output = output + items[i].act + '<br />';
 
                                 if (items[i].name.localeCompare("Spring_Terror") == 0) {
-                                    var key = new Item("Key", "Seems like it might unlock something..", "This might be useful");
+                                    var key = new Item("Key", "Seems like it unlocks something..", "This might be useful");
                                     room.items.push(key);
                                     hasFoundKey = true;
                                 }
@@ -187,13 +190,42 @@ function associateCommands(command, tag, args) {
                 var items = room.items;
                 for (var i = 0; i < items.length; i++) {
                     if(item.localeCompare(items[i].name) == 0) {
+                        // Add to folder
                         evidenceFolder.items.push(items[i]);
                         room.items.splice(i,1);
                     }
                 }
             }
-            // Add to folder
             break;
+
+        case "Key":
+          if (currentRoom.localeCompare("Dressing_Room") == 0) {
+            if (hasMadeEvidence) {
+              if (evidenceFolder.items) {
+                var items = evidenceFolder.items;
+                for (var i = 0; i < items.length; i++) {
+                  if (items[i].name.localeCompare("Key") == 0) {
+                    hasKey = true;
+                  }
+                }
+                if (hasKey) {
+                  if ((args[0]) && (args[1])) {
+                    if ((args[0].localeCompare("|") == 0) && (args[1].localeCompare("Box") == 0)) {
+                      output = output + "You found the letter" + '<br />';
+                      var letterSecond = new Item("Letter_SecondPiece", "..S#3," + '<br />' + " I always have." + '<br />' + "~Penelope", "Looks like the letter was torn in half");
+                      room.items.push(letterSecond);
+                      hasLetterSecond = true;
+                    }
+                  }
+                } else {
+                  output = output + "You don't have the key for this" + '<br />';
+                }
+              }
+            } else {
+              output = output + "You don't have the key for this" + '<br />';
+            }
+          }
+          break;
 
         default:
             return "Could not recognize command";
@@ -217,7 +249,7 @@ function findRoom(roomName) {
 
 function verifyChild(childRoom, children) {
     for (var i = 0; i < children.length; i++) {
-        if (children[i].name.localeCompare(childRoom) == 0) {    
+        if (children[i].name.localeCompare(childRoom) == 0) {
             return true;
         }
     }

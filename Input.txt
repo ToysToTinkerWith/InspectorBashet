@@ -5,7 +5,7 @@
     <room name = "3rd_Floor"></room>
     <room name = "4th_Floor"></room>
     <room name = "Attic"></room>
-    
+
     <room name = "Wine_Cellar">
         <item>
             <name>Wine_Shelf</name>
@@ -103,6 +103,11 @@
             <activation> none </activation>
         </item>
         <item>
+            <name>Box</name>
+            <description> A beautiful box encrusted with gems. </description>
+            <activation> You have to unlock this to see its contents. </activation>
+        </item>
+        <item>
             <name>Clothed_Mannequin</name>
             <description> A female mannequin showcasing an oversized fur coat</description>
             <activation> none </activation>
@@ -166,14 +171,14 @@
 
     <room name = "Gallery">
         <item>
-            <name>Spring_Terror</name>
-            <description> A couple running from a forest fire</description>
-            <activation> As you look at this painting, you notice it's not quite flat on the wall. You inspect behind it to reveal a key attached to the back </activation>
-        </item>
-        <item>
             <name>Autumn_Dance</name>
             <description> Colored leaves spinning in the stormy winds </description>
             <activation> none </activation>
+        </item>
+        <item>
+            <name>Spring_Terror</name>
+            <description> A couple running from a forest fire</description>
+            <activation> As you look at this painting, you notice it's not quite flat on the wall. You inspect behind and a key falls off the back. </activation>
         </item>
         <item>
             <name>Summer_Veil</name>
