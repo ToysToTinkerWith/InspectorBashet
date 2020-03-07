@@ -9,7 +9,7 @@ function Tree(){
 
     this.buildInitTree = function(){
 
-      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd_Floor", "3rd_Floor", "4th_Floor", "Bedroom", "Study", "Dressing_Room", "Game_Room", "Armory", "Shooting_Range", "Gallery", "Billiard_Room", "Piano_Room", "Attic", "Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid's_Room"];
+      const nameList = ["Grand_Foyer", "Wine_Cellar", "Kitchen", "Dining_Hall", "Elevator", "2nd_Floor", "3rd_Floor", "4th_Floor", "Bedroom", "Study", "Dressing_Room", "Armory", "Shooting_Range", "Gallery", "Billard_Room", "Piano_Room", "Attic", "Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid_Room"];
 
       this.nodes = nameList.map(name => new Node({name}));
 
@@ -37,12 +37,12 @@ function Tree(){
       for (var i = 0; i < this.root.children[3].children[1].children.length; i++) // Cycling to assign 3rd floor as parent
         this.root.children[3].children[1].children[i].parent = this.root.children[3].children[1];
 ///////////////////////////4TH FLOOR////////////////////////////////////////////////////////////////////////////////////////////
-      this.root.children[3].children[2].children = this.nodes.filter(node => ["Gallery", "Billiard_Room", "Piano_Room", "Attic"].includes(node.name));
+      this.root.children[3].children[2].children = this.nodes.filter(node => ["Gallery", "Billard_Room", "Piano_Room", "Attic"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[2].children.length; i++) // Cycling to assign 4th floor as parent
         this.root.children[3].children[2].children[i].parent = this.root.children[3].children[2];
 ///////////////////////////ATTIC//////////////////////////////////////////////////////////////////////////////////////////////
-      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid's_Room"].includes(node.name));
+      this.root.children[3].children[2].children[3].children = this.nodes.filter(node => ["Servant#1_Room", "Servant#2_Room", "Servant#3_Room", "Maid_Room"].includes(node.name));
 
       for (var i = 0; i < this.root.children[3].children[2].children[3].children.length; i++) // Cycling to assign Attic as parent
         this.root.children[3].children[2].children[3].children[i].parent = this.root.children[3].children[2].children[3];

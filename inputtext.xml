@@ -239,7 +239,7 @@
         <person>
             <name>Servant#3</name>
             <description> A nice-looking fellow who looks like he just got out of bed </description>
-            <dialog> Didn't hear you come in! </dialog>
+            <dialog> Hello there! Didn't hear you come in! </dialog>
         </person>
     </room>
 

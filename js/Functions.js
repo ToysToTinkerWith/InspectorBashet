@@ -5,6 +5,7 @@ var inEvidence = false;
 var hasKey = false;
 var hasLetterFirst = false;
 var hasLetterSecond = false;
+var hasTalkedToServant = false;
 
 function myFunction(result) {
     var text = parseResult(result);
@@ -82,20 +83,32 @@ function associateCommands(command, tag, args) {
 
     switch(command) {
         case "cd":
+            if (inEvidence) {
+              inEvidence = false;
+            }
             if (args[0].localeCompare("..") == 0) {
                 if(currentRoom.localeCompare("Grand_Foyer") != 0) {
                     currentRoom = parent;
                 }
-                else if (inEvidence) {
-                    inEvidence = false;
+            }
+            else if (args[0].localeCompare("Billard_Room") == 0) {
+              if (!hasTalkedToServant) {
+                output = output + "The Billard_Room is locked for some reason." + '<br />';
+              }
+              else {
+                if (verifyChild(args[0], children)) {
+                    currentRoom = args[0];
                 }
+              }
             }
             else {
                 if (verifyChild(args[0], children)) {
                     currentRoom = args[0];
                 }
-                else if (args[0].localeCompare(evidenceFolder.name) != 0) {
-                    output = "Room is not a child of current room";
+                else if (hasMadeEvidence) {
+                  if (args[0].localeCompare(evidenceFolder.name) != 0) {
+                      output = "Room is not a child of current room";
+                  }
                 }
             }
             if (hasMadeEvidence) {
@@ -107,6 +120,10 @@ function associateCommands(command, tag, args) {
             }
             break;
         case "ls":
+            console.log(inEvidence);
+            if (inEvidence) {
+              inEvidence = false;
+            }
             if (room.items) {
               var items = room.items;
               for (var i = 0; i < items.length; i++) {
@@ -128,6 +145,16 @@ function associateCommands(command, tag, args) {
 
             break;
         case "touch":
+            if (evidenceFolder.items) {
+              var evidenceItems = evidenceFolder.items;
+              if (args[0]) {
+                  for (var i = 0; i < items.length; i++) {
+                      if(args[0].localeCompare(items[i].name) == 0) {
+                          output = output + items[i].descript + '<br />';
+                      }
+                }
+              }
+            }
             if (room.items) {
                 var items = room.items;
                 if(args[0]) {
@@ -135,7 +162,7 @@ function associateCommands(command, tag, args) {
                         if(args[0].localeCompare(items[i].name) == 0) {
                             output = output + items[i].descript + '<br />' + '<br />';
                             if (items[i].act.localeCompare(" none ") == 0) {
-                                output = output + "Nothing special about this thing" + '<br />';
+                                output = output + "Doesn't feel very special" + '<br />';
                             }
                             else {
                                 output = output + items[i].act + '<br />';
@@ -144,6 +171,14 @@ function associateCommands(command, tag, args) {
                                     var key = new Item("Key", "Seems like it unlocks something..", "This might be useful");
                                     room.items.push(key);
                                     hasFoundKey = true;
+                                }
+                                if (items[i].name.localeCompare("Wall_Mounted_Paper_Target") == 0) {
+                                  var letterFirst = new Item("Letter_FirstPiece", "My Love," + '<br />'
+                                  + "We shall be together soon" + '<br />'
+                                  + "I'm risking everything to send you this letter but I needed" + '<br />'
+                                  + "to share my feelings. I love you, ..." + '<br />', "Looks like the letter was torn.");
+                                  room.items.push(letterFirst);
+                                  hasLetterFirst = true;
                                 }
                             }
                             break;
@@ -164,11 +199,33 @@ function associateCommands(command, tag, args) {
         case "echo":
             if (room.people) {
                 var people = room.people;
+                var person;
                 if(args[0]) {
                     for (var i = 0; i < people.length; i++) {
                         if(args[0].localeCompare(people[i].name) == 0) {
-                            output = output + people[i].descript + '<br />' + people[i].dia + '<br />';
+                            output = output + people[i].descript + '<br />' + '<br />'
+                            + people[i].dia + '<br />' + '<br />';
+                            person = people[i];
                         }
+                    }
+                    if (args[0].localeCompare("Servant#3") == 0) {
+                      // Found both pieces
+                      if ((hasLetterFirst) && (hasLetterSecond)) {
+                        output = output + "Oh alright. I can't hide it anymore." + '<br />'
+                        + "Penelope and I have been deeply in love for the last few years." + '<br />'
+                        + "I promise I don't know anything else." + '<br />'
+                        + "Whatever you do, I beg you please don't tell the master. " + '<br />'
+                        + "If you're trying to explore the entire house, maybe I can help you for your silence." + '<br />' + '<br />';
+                        output = output + "Servant#3 has opened the Billard Room for you!" + '<br />';
+
+                        // Unlock billard room
+                        hasTalkedToServant = true;
+                      }
+                      // Found 2nd piece only
+                      else if ((hasLetterSecond) && (!hasLetterFirst)) {
+                        output = output + "Sorry, I'd rather not talk about that..." + '<br />';
+                      }
+
                     }
                 }
             }
@@ -211,8 +268,8 @@ function associateCommands(command, tag, args) {
                 if (hasKey) {
                   if ((args[0]) && (args[1])) {
                     if ((args[0].localeCompare("|") == 0) && (args[1].localeCompare("Box") == 0)) {
-                      output = output + "You found the letter" + '<br />';
-                      var letterSecond = new Item("Letter_SecondPiece", "..S#3," + '<br />' + " I always have." + '<br />' + "~Penelope", "Looks like the letter was torn in half");
+                      output = output + "Inside the box is a scrap of paper" + '<br />';
+                      var letterSecond = new Item("Letter_SecondPiece", "..S#3," + '<br />' + " I always have." + '<br />' + "~Penelope", "Looks like the letter was torn.");
                       room.items.push(letterSecond);
                       hasLetterSecond = true;
                     }
