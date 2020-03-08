@@ -1832,8 +1832,9 @@
                 var done = 0;
 
                 if (hasMadeEvidence) {
-                  var evItems = evidenceFolder.items;
-                  for (var a = 0; a < evItems.length; a++) {
+                  if (inEvidence) {
+                    var evItems = evidenceFolder.items;
+                    for (var a = 0; a < evItems.length; a++) {
                       if(done == 0){
                           temp = stringMatch(lastCommand, evItems[a].name);
                           if(temp.length != 0) {
@@ -1848,24 +1849,27 @@
                               done = 2;
                           }
                       }
+                    }
                   }
 
                 // Account for evidence folder
-                  if (done == 0) {
-                    temp = stringMatch(lastCommand, evidenceFolder.name);
-                    if(temp.length != 0) {
-                        addition = temp;
-                        done = 1;
-                        //checkedEvidence = true;
-                    }
-                  }
-                  else if(done == 1) {
+                  if (!inEvidence) {
+                    if (done == 0) {
                       temp = stringMatch(lastCommand, evidenceFolder.name);
                       if(temp.length != 0) {
-                          addition = "";
-                          done = 2;
+                          addition = temp;
+                          done = 1;
                           //checkedEvidence = true;
                       }
+                    }
+                    else if(done == 1) {
+                        temp = stringMatch(lastCommand, evidenceFolder.name);
+                        if(temp.length != 0) {
+                            addition = "";
+                            done = 2;
+                            //checkedEvidence = true;
+                        }
+                    }
                   }
                 }
 

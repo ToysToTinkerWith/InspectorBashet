@@ -59,7 +59,7 @@
         <item>
             <name>Bed</name>
             <description> An elaborate king sized bed with a polished wood frame </description>
-            <activation> none </activation>
+            <activation> Under the bed is a small note with some numbers on it </activation>
         </item>
         <item>
             <name>Dresser</name>
@@ -141,7 +141,7 @@
         <item>
             <name>Wall_Mounted_Paper_Target</name>
             <description> Whoever was shooting this target got several bullseyes </description>
-            <activation> As you take a closer look, you find a ripped piece of paper pinned on the target. </activation>
+            <activation> As you take a closer look, you find a piece of paper with holes, pinned on the target. </activation>
         </item>
         <item>
             <name>Ammunition_box</name>
@@ -210,7 +210,7 @@
         <item>
             <name>Stick#3</name>
             <description> Simple wooden pool stick, although something seems strange about it.. </description>
-            <activation> While grabbing for the pool stick, you hear a click and a secret door opens to reveal a vault. </activation>
+            <activation> While grabbing for the pool stick, you hear a click and a hidden compartment opens to reveal a vault. </activation>
         </item>
     </room>
 
