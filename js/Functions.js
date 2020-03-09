@@ -128,14 +128,15 @@ function associateCommands(command, tag, args) {
     // Game Command Logic
     switch(command) {
         case "help":
-            output = output + "cd 'roomname' to enter a room, '..' to backtrack" + '<br />';
-            output = output + "ls -" + '<br />';
-            output = output + "touch -" + '<br />';
-            output = output + "echo -" + '<br />';
-            output = output + "mkdir -" + '<br />';
-            output = output + "mv -" + '<br />';
-            output = output + "| -"+ '<br />';
-            output = output + "TAB -" + '<br />';
+            output = output + "cd 'room_name' to enter a room, '..' to backtrack" + '<br />';
+            output = output + "ls - display room's contents (rooms, people, items)" + '<br />';
+            output = output + "touch - inspect an item's properties" + '<br />';
+            output = output + "echo - 'person_name' to talk to that person" + '<br />';
+            output = output + "mkdir - 'folder_name' to create your evidence folder" + '<br />';
+            output = output + "mv - 'item_name' 'evidence_folder' to store findings" + '<br />';
+            output = output + "'item1' | 'item2' to use an item on another item" + '<br />';
+            output = output + "-------------------------------------------------------" + '<br />';
+            output = output + "TAB - command line autocomplete (use generously)" + '<br />';
             break;
         case "cd":
             // No longer viewing evidence
