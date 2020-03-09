@@ -1831,107 +1831,109 @@
                 var temp;
                 var done = 0;
 
-                if (hasMadeEvidence) {
-                  if (inEvidence) {
-                    var evItems = evidenceFolder.items;
-                    for (var a = 0; a < evItems.length; a++) {
-                      if(done == 0){
-                          temp = stringMatch(lastCommand, evItems[a].name);
-                          if(temp.length != 0) {
-                              addition = temp;
-                              done = 1;
-                          }
+                if (splitRes.length > 1) {
+                  if (hasMadeEvidence) {
+                    if (inEvidence) {
+                      var evItems = evidenceFolder.items;
+                      for (var a = 0; a < evItems.length; a++) {
+                        if(done == 0){
+                            temp = stringMatch(lastCommand, evItems[a].name);
+                            if(temp.length != 0) {
+                                addition = temp;
+                                done = 1;
+                            }
+                        }
+                        else if(done == 1) {
+                            temp = stringMatch(lastCommand, evItems[a].name);
+                            if(temp.length != 0) {
+                                addition = "";
+                                done = 2;
+                            }
+                        }
+                      }
+                    }
+
+                  // Account for evidence folder
+                    if (!inEvidence) {
+                      if (done == 0) {
+                        temp = stringMatch(lastCommand, evidenceFolder.name);
+                        if(temp.length != 0) {
+                            addition = temp;
+                            done = 1;
+                            //checkedEvidence = true;
+                        }
                       }
                       else if(done == 1) {
-                          temp = stringMatch(lastCommand, evItems[a].name);
+                          temp = stringMatch(lastCommand, evidenceFolder.name);
                           if(temp.length != 0) {
                               addition = "";
                               done = 2;
+                              //checkedEvidence = true;
                           }
                       }
                     }
                   }
 
-                // Account for evidence folder
                   if (!inEvidence) {
-                    if (done == 0) {
-                      temp = stringMatch(lastCommand, evidenceFolder.name);
-                      if(temp.length != 0) {
-                          addition = temp;
-                          done = 1;
-                          //checkedEvidence = true;
-                      }
+                    // Account for items
+                    var items = room.items;
+                    for (var i = 0; i < items.length; i++) {
+                        if(done == 0){
+                            temp = stringMatch(lastCommand, items[i].name);
+                            if(temp.length != 0) {
+                                addition = temp;
+                                done = 1;
+                            }
+                        }
+                        else if(done == 1) {
+                            temp = stringMatch(lastCommand, items[i].name);
+                            if(temp.length != 0) {
+                                addition = "";
+                                done = 2;
+                            }
+                        }
                     }
-                    else if(done == 1) {
-                        temp = stringMatch(lastCommand, evidenceFolder.name);
-                        if(temp.length != 0) {
-                            addition = "";
-                            done = 2;
-                            //checkedEvidence = true;
+                    // Account for people
+                    var people = room.people;
+                    for (var j = 0; j < people.length; j++) {
+                        if(done == 0){
+                            temp = stringMatch(lastCommand, people[j].name);
+                            if(temp.length != 0) {
+                                addition = temp;
+                                done = 1;
+                            }
+                        }
+                        else if(done == 1) {
+                            temp = stringMatch(lastCommand, people[j].name);
+                            if(temp.length != 0) {
+                                addition = "";
+                                done = 2;
+                            }
+                        }
+                    }
+
+                    // Account for rooms
+                    var children = getChildren(tree, currentRoom);
+                    for (var k = 0; k < children.length; k++) {
+                        if(done == 0){
+                            temp = stringMatch(lastCommand, children[k].name);
+                            if(temp.length != 0) {
+                                addition = temp;
+                                done = 1;
+                            }
+                        }
+                        else if(done == 1) {
+                            temp = stringMatch(lastCommand, children[k].name);
+                            if(temp.length != 0) {
+                                addition = "";
+                                done = 2;
+                            }
                         }
                     }
                   }
+
+                  self.insert(addition);
                 }
-
-                if (!inEvidence) {
-                  // Account for items
-                  var items = room.items;
-                  for (var i = 0; i < items.length; i++) {
-                      if(done == 0){
-                          temp = stringMatch(lastCommand, items[i].name);
-                          if(temp.length != 0) {
-                              addition = temp;
-                              done = 1;
-                          }
-                      }
-                      else if(done == 1) {
-                          temp = stringMatch(lastCommand, items[i].name);
-                          if(temp.length != 0) {
-                              addition = "";
-                              done = 2;
-                          }
-                      }
-                  }
-                  // Account for people
-                  var people = room.people;
-                  for (var j = 0; j < people.length; j++) {
-                      if(done == 0){
-                          temp = stringMatch(lastCommand, people[j].name);
-                          if(temp.length != 0) {
-                              addition = temp;
-                              done = 1;
-                          }
-                      }
-                      else if(done == 1) {
-                          temp = stringMatch(lastCommand, people[j].name);
-                          if(temp.length != 0) {
-                              addition = "";
-                              done = 2;
-                          }
-                      }
-                  }
-
-                  // Account for rooms
-                  var children = getChildren(tree, currentRoom);
-                  for (var k = 0; k < children.length; k++) {
-                      if(done == 0){
-                          temp = stringMatch(lastCommand, children[k].name);
-                          if(temp.length != 0) {
-                              addition = temp;
-                              done = 1;
-                          }
-                      }
-                      else if(done == 1) {
-                          temp = stringMatch(lastCommand, children[k].name);
-                          if(temp.length != 0) {
-                              addition = "";
-                              done = 2;
-                          }
-                      }
-                  }
-                }
-
-                self.insert(addition);
 
 
 

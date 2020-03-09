@@ -1,3 +1,8 @@
+var hasStarted = false;
+var givenInfo = false;
+var doneIntro = false;
+var givenHelp = false;
+
 var evidenceFolder;
 var hasFoundKey = false;
 var hasMadeEvidence = false;
@@ -13,6 +18,10 @@ var hasCombination = false;
 var hasTouchedPoolStick = false;
 var hasFoundVault = false;
 var hasCrackedVault = false;
+
+var justFinished = false;
+var justice = false;
+var resolution = false;
 
 function myFunction(result) {
     var text = parseResult(result);
@@ -68,10 +77,44 @@ function parseResult(result) {
 
 function executeCommands(command, tag, args) {
     // Outputs room/story text
-    var textOutput;
+    var textOutput=''
+    var storyOutput='';
+    if (givenHelp) {
+      textOutput = associateCommands(command, tag, args);
+    }
+    // Do checkpoints
+    if (!hasStarted) {
+      storyOutput = "Thanks for coming with such limited time, BASHet. I’m delighted that you can help me today." + '<br />';
+      hasStarted = true;
+    }
+    else if (!givenInfo) {
+      storyOutput = "My wife has been missing since last night, and no one seems to know anything…" + '<br />' + '<br />' + "This is a very secluded area, so it’s unlikely she left the house. Feel free to look anywhere you can." + '<br />';
+      givenInfo = true;
+    }
+    else if (!doneIntro) {
+      storyOutput = "The servants’ quarters are in the Attic should you want to talk to them, but the Maid & Butler are usually busy around the house.." + '<br />';
+      doneIntro = true;
+    }
+    else if (!givenHelp) {
+      storyOutput = "Type 'help' for the list of usable commands" + '<br />';
+      givenHelp = true;
+    }
 
-    textOutput = associateCommands(command, tag, args);
-    // Do stuff
+    else if (justFinished) {
+      storyOutput = "After unlocking the trapdoor, you see a woman in her 30s unconscious on the floor." + '<br />';
+    }
+    else if (justice) {
+      storyOutput = "You were able to fend off the owner and save everyone. You'll be sure he gets what he deserves" + '<br />';
+    }
+    else if (resolution) {
+      storyOutput = "Penelope thanks you from the bottom of her heart for freeing her from her husband's possessive grasp." + '<br />';
+      storyOutput = storyOutput + "Servant#3 expresses his gratitude for allowing them to live out their hapiness together." + '<br />';
+    }
+    else {
+      storyOutput = '';
+    }
+    document.getElementById("storyteller").innerHTML = storyOutput;
+
 
     return textOutput;
 }
@@ -84,6 +127,16 @@ function associateCommands(command, tag, args) {
 
     // Game Command Logic
     switch(command) {
+        case "help":
+            output = output + "cd 'roomname' to enter a room, '..' to backtrack" + '<br />';
+            output = output + "ls -" + '<br />';
+            output = output + "touch -" + '<br />';
+            output = output + "echo -" + '<br />';
+            output = output + "mkdir -" + '<br />';
+            output = output + "mv -" + '<br />';
+            output = output + "| -"+ '<br />';
+            output = output + "TAB -" + '<br />';
+            break;
         case "cd":
             // No longer viewing evidence
             if (inEvidence) {
@@ -152,6 +205,11 @@ function associateCommands(command, tag, args) {
                 output = output + '<br />' + '<span style="color:tan">' + evidenceFolder.name + '</span>' + '<br />';
             }
 
+            if (tag) {
+              if (tag.localeCompare("-l") == 0) {
+                console.log("FULL LS");
+              }
+            }
             break;
         case "touch":
             // Check to see if player is trying to touch evidence evidenceFolder
@@ -243,13 +301,15 @@ function associateCommands(command, tag, args) {
         case "echo":
             var people = room.people;
             var person;
-            var items = evidenceFolder.items;
-            for (var i = 0; i < items.length; i++) {
-              if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
-                hasLetterFirst = true;
-              }
-              if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
-                hasLetterSecond = true;
+            if (hasMadeEvidence) {
+              var items = evidenceFolder.items;
+              for (var i = 0; i < items.length; i++) {
+                if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
+                  hasLetterFirst = true;
+                }
+                if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
+                  hasLetterSecond = true;
+                }
               }
             }
             if(args[0]) {
@@ -277,7 +337,7 @@ function associateCommands(command, tag, args) {
                     hasTalkedToServant = true;
                   }
                   // Found 2nd piece only
-                  else if ((foundLetterSecond) && (!foundLetterFirst)) {
+                  else if ((hasLetterSecond) && (!hasLetterFirst)) {
                     output = output + '<span style="color:red">' + "Sorry, I'd rather not talk about that..." + '</span>' + '<br />';
                   }
 
@@ -347,7 +407,7 @@ function associateCommands(command, tag, args) {
             }
             break;
 
-        case "Note":
+        case "33-05-76":
             if (currentRoom.localeCompare("Billard_Room") == 0) {
               if (foundCombination) {
                   var items = evidenceFolder.items;
@@ -373,6 +433,7 @@ function associateCommands(command, tag, args) {
                 output = output + '<span style="color:red">' + "Could not recognize command" + '</span>' + '<br />';
               }
             }
+            break;
 
         default:
             return '<span style="color:red">' + "Could not recognize command" + '</span>';

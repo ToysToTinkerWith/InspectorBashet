@@ -184,6 +184,11 @@
             <description> A wooden bench padded with a red velvet cushion </description>
             <activation> none </activation>
         </item>
+        <person>
+          <name>Butler</name>
+          <description> An older gent, radiating with class, melodiously hitting the piano keys. </description>
+          <dialog> What gives? It's been forever since anyone played pool with me in this house.. </dialog>
+        </person>
     </room>
 
     <room name = "Billard_Room">
@@ -228,6 +233,11 @@
             <description> A cozy place for the servant to sleep </description>
             <activation> none </activation>
         </item>
+        <person>
+          <name>Servant#2</name>
+          <description> He seems engaged in his book. </description>
+          <dialog> I only have a few minutes off, leave me alone, please. </dialog>
+        </person>
     </room>
 
     <room name = "Servant#3_Room">
