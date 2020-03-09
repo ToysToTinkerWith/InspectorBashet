@@ -1,3 +1,6 @@
+var textOutput;
+var storyOutput;
+
 var hasStarted = false;
 var givenInfo = false;
 var doneIntro = false;
@@ -71,10 +74,10 @@ function parseResult(result) {
 
 function executeCommands(command, tag, args) {
     // Outputs room/story text
-    var textOutput=''
-    var storyOutput='';
+    textOutput = '';
+    storyOutput = '';
     if (givenHelp && !beginCutScene) {
-      textOutput = associateCommands(command, tag, args);
+      textOutput = associateCommands(command, tag, args, storyOutput);
     }
 
     if ((command.localeCompare("rm") == 0) && (args[0].localeCompare("knife") == 0)) {
@@ -114,14 +117,14 @@ function executeCommands(command, tag, args) {
       beginCutScene = true;
       startCutScene();
     }
-
+    console.log(storyOutput);
     document.getElementById("storyteller").innerHTML = storyOutput;
 
 
     return textOutput;
 }
 
-function associateCommands(command, tag, args) {
+function associateCommands(command, tag, args, storyOutput) {
     var output = "";
     var children = getChildren(tree, currentRoom);
     var parent = getParent(tree, currentRoom);
@@ -157,6 +160,7 @@ function associateCommands(command, tag, args) {
             output = output + "TAB - command line autocomplete (use generously)" + '<br />';
             break;
         case "cd":
+            document.getElementById("charsprite").src="images/Black.png";
             // No longer viewing evidence
             if (inEvidence) {
               inEvidence = false;
@@ -214,6 +218,7 @@ function associateCommands(command, tag, args) {
             }
             break;
         case "ls":
+            document.getElementById("charsprite").src="images/Black.png";
             if (inEvidence) {
               inEvidence = false;
             }
@@ -324,6 +329,25 @@ function associateCommands(command, tag, args) {
                   for (var i = 0; i < people.length; i++) {
                       if(args[0].localeCompare(people[i].name) == 0) {
                           output = output + '<span style="color:limegreen">' + "Hey! Don't touch me!" + '</span>' + '<br />';
+                          var person = people[i];
+                          personName = people[i].name;
+                          switch(personName) {
+                            case "Maid":
+                              document.getElementById("charsprite").src="images/maid.png";
+                              break;
+                            case "Head_Chef_Jerald":
+                              document.getElementById("charsprite").src="images/chef_jerald.png";
+                              break;
+                            case "Butler":
+                              document.getElementById("charsprite").src="images/butler.png";
+                              break;
+                            case "Servant#2":
+                              document.getElementById("charsprite").src="images/servant2.png";
+                              break;
+                            case "Servant#3":
+                              document.getElementById("charsprite").src="images/servant3.png";
+                              break;
+                          }
                       }
                   }
             }
@@ -340,8 +364,11 @@ function associateCommands(command, tag, args) {
                 // Print nothing
               }
               else if(args[0].localeCompare(people[i].name) == 0) {
-                  output = output + people[i].descript + '<br />' + '<br />'
-                  + '<span style="color:limegreen">' + people[i].dia + '</span>' + '<br />' + '<br />';
+                // TRY TO GET DIALOG ON BOTTOM PANEL
+                  output = output + people[i].descript + '<br />';
+                  storyOutput = people[i].dia + '<br />' + '<br />';
+                  console.log(document.getElementById("storyteller").innerHTML);
+                  //
                   person = people[i];
                   personName = people[i].name;
                   switch(personName) {
@@ -351,8 +378,14 @@ function associateCommands(command, tag, args) {
                     case "Head_Chef_Jerald":
                       document.getElementById("charsprite").src="images/chef_jerald.png";
                       break;
-                    case "Servant#3":
+                    case "Butler":
                       document.getElementById("charsprite").src="images/butler.png";
+                      break;
+                    case "Servant#2":
+                      document.getElementById("charsprite").src="images/servant2.png";
+                      break;
+                    case "Servant#3":
+                      document.getElementById("charsprite").src="images/servant3.png";
                       break;
                   }
               }
@@ -484,7 +517,7 @@ function associateCommands(command, tag, args) {
 
 function startCutScene() {
   setTimeout(function(){
-    document.getElementById("storyteller").innerHTML = "Ha! So you figured it out! Unlucky for you now, I will have my revenge on all of you!";
+    document.getElementById("storyteller").innerHTML = '<span style="color:red">' + "Ha! So you figured it out! Unlucky for you now, I will have my revenge on all of you!" + '</span>';
   }, 4000);
   continueCutScene();
 }
@@ -494,7 +527,7 @@ function continueCutScene() {
       disableCommands = false;
   }, 8000);
   setTimeout(function(){
-      document.getElementById("demo").innerHTML = "The owner lunges at you!";
+      document.getElementById("demo").innerHTML = '<span style="color:red">' + "The owner lunges at you!" + '</span>';
       document.getElementById("storyteller").innerHTML = "Quick! Use 'rm knife' to disable his weapon!";
   }, 8000);
   testUserSpeed();
@@ -512,7 +545,7 @@ function testUserSpeed() {
 function execFinale() {
   disableCommands = true;
   setTimeout(function(){
-    document.getElementById("demo").innerHTML = "With your quick reflexes, you are able to disarm the attacker and easily restrain him!";
+    document.getElementById("demo").innerHTML = '<span style="color:red">' + "With your quick reflexes, you are able to disarm the attacker and easily restrain him!" + '</span>';
   }, 1000);
   setTimeout(function(){
     document.getElementById("demo").innerHTML = "The chaos dims down, and you have the situation under control once again." + '<br />';
