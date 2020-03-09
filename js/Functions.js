@@ -299,50 +299,64 @@ function associateCommands(command, tag, args) {
             break;
 
         case "echo":
-            var people = room.people;
-            var person;
-            if (hasMadeEvidence) {
-              var items = evidenceFolder.items;
-              for (var i = 0; i < items.length; i++) {
-                if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
-                  hasLetterFirst = true;
-                }
-                if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
-                  hasLetterSecond = true;
-                }
+        var people = room.people;
+        var person;
+        var personName;
+        // var items = evidenceFolder.items;
+        //
+        // for (var i = 0; i < items.length; i++) {
+        //   if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
+        //     hasLetterFirst = true;
+        //   }
+        //   if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
+        //     hasLetterSecond = true;
+        //   }
+        // }
+        if(args[0]) {
+            for (var i = 0; i < people.length; i++) {
+              if ((currentRoom.localeCompare("Servant#3_Room") == 0) && hasLetterFirst && hasLetterSecond) {
+                // Print nothing
+              }
+              else if(args[0].localeCompare(people[i].name) == 0) {
+                  output = output + people[i].descript + '<br />' + '<br />'
+                  + '<span style="color:limegreen">' + people[i].dia + '</span>' + '<br />' + '<br />';
+                  person = people[i];
+                  personName = people[i].name;
+                  switch(personName) {
+                    case "Maid":
+                      document.getElementById("charsprite").src="images/maid.png";
+                      break;
+                    case "Head_Chef_Jerald":
+                      document.getElementById("charsprite").src="images/chef_jerald.png";
+                      break;
+                    case "Servant#3":
+                      document.getElementById("charsprite").src="images/butler.png";
+                      break;
+                    default:
+                      return "";
+                  }
               }
             }
-            if(args[0]) {
-                for (var i = 0; i < people.length; i++) {
-                  if ((currentRoom.localeCompare("Servant#3_Room") == 0) && hasLetterFirst && hasLetterSecond) {
-                    // Print nothing
-                  }
-                  else if(args[0].localeCompare(people[i].name) == 0) {
-                      output = output + people[i].descript + '<br />' + '<br />'
-                      + '<span style="color:limegreen">' + people[i].dia + '</span>' + '<br />' + '<br />';
-                      person = people[i];
-                  }
-                }
-                if (args[0].localeCompare("Servant#3") == 0) {
-                  // Found both pieces
-                  if ((hasLetterFirst) && (hasLetterSecond)) {
-                    output = output + '<span style="color:limegreen">' + "Oh alright. I can't hide it anymore." + '<br />'
-                    + "Penelope and I have been deeply in love for the last few years." + '<br />'
-                    + "I promise I don't know anything else." + '<br />'
-                    + "Whatever you do, I beg you please don't tell the master. " + '<br />'
-                    + "If you're trying to explore the entire house, maybe I can help you for your silence." + '<br />' + '<br />';
-                    output = output + "Servant#3 has opened the Billard Room for you!" + '</span>' + '<br />';
+            if (args[0].localeCompare("Servant#3") == 0) {
+              // Found both pieces
+              if ((hasLetterFirst) && (hasLetterSecond)) {
+                output = output + '<span style="color:limegreen">' + "Oh alright. I can't hide it anymore." + '<br />'
+                + "Penelope and I have been deeply in love for the last few years." + '<br />'
+                + "I promise I don't know anything else." + '<br />'
+                + "Whatever you do, I beg you please don't tell the master. " + '<br />'
+                + "If you're trying to explore the entire house, maybe I can help you for your silence." + '<br />' + '<br />';
+                output = output + "Servant#3 has opened the Billard Room for you!" + '</span>' + '<br />';
 
-                    // Unlock billard room
-                    hasTalkedToServant = true;
-                  }
-                  // Found 2nd piece only
-                  else if ((hasLetterSecond) && (!hasLetterFirst)) {
-                    output = output + '<span style="color:red">' + "Sorry, I'd rather not talk about that..." + '</span>' + '<br />';
-                  }
+                // Unlock billard room
+                hasTalkedToServant = true;
+              }
+              // Found 2nd piece only
+              else if ((foundLetterSecond) && (!foundLetterFirst)) {
+                output = output + '<span style="color:red">' + "Sorry, I'd rather not talk about that..." + '</span>' + '<br />';
+              }
 
-                }
             }
+        }
             break;
 
         case "mkdir":
