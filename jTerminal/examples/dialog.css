@@ -28,16 +28,29 @@
  #demo{
    position:absolute;
    background-color: #000;
-   /* background-size: 300px 30px; */
-   width:50%;
+   width:47.55%;
    height:30%;
-   left:24.5%;
+   left:25.55%;
    border-style:solid;
    color:#fff;
    border-color: #AAAAAA;
    border-width:thick;
    padding: 5px 5px 10px 10px;
-   box-shadow: 10px 10px 5px grey;
+   /* box-shadow: 10px 10px 5px grey; */
+ }
+ #storyteller{
+   position:absolute;
+   background-color: #000;
+   width:47.55%;
+   height:15%;
+   left:25.55%;
+   top:65.5%;
+   border-style:solid;
+   color:cyan;
+   border-color: #AAAAAA;
+   border-width:thick;
+   padding: 5px 5px 10px 10px;
+   /* box-shadow: 10px 10px 5px grey; */
  }
 .dialog {
     /* background-color: #00a; */
@@ -72,9 +85,10 @@
     background-color: #aaa;
     float: left;
     position: absolute;
-    top: 60%;
+
+    bottom:21%;
     left: 50%;
-    box-shadow: 10px 10px 5px grey;
+    /* box-shadow: 10px 10px 5px grey; */
 
     transform: translate(-50%, -50%);
     /* -webkit-box-shadow: calc(var(--char-width) * 2px) calc(var(--char-width) * 2px) black;
