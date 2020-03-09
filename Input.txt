@@ -176,7 +176,7 @@
     <room name = "Piano_Room">
         <item>
             <name>Grand_Piano</name>
-            <description> Slick black color without a blemish on it. Looks like it has never been played </description>
+            <description> Slick black color without a blemish on it. </description>
             <activation> none </activation>
         </item>
         <item>
@@ -185,9 +185,9 @@
             <activation> none </activation>
         </item>
         <person>
-          <name>Butler</name>
-          <description> An older gent, radiating with class, melodiously hitting the piano keys. </description>
-          <dialog> What gives? It's been forever since anyone played pool with me in this house.. </dialog>
+            <name>Butler</name>
+            <description> An older gent, radiating with class and skillfully hitting the piano keys. </description>
+            <dialog> What gives? It's been forever since the master has played pool with me.. </dialog>
         </person>
     </room>
 

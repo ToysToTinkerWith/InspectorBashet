@@ -63,6 +63,14 @@
 	<br>
   <img id="bashet-sprite" src="images/bashet.png">
   <img id="charsprite" src="images/butler.png">
+
+  <script src = "js/Functions.js"></script>
+  <script src = "js/Parser.js"></script>
+  <script src = "js/Item.js"></script>
+  <script src = "js/Room.js"></script>
+  <script src = "js/Person.js"></script>
+  <script src = "js/TreeStruct.js"></script>
+
   <script>
 	//   function makeUL(array) {
 	// 	var ul = document.createElement('ul');
@@ -76,6 +84,7 @@
 	//   makeUL(output);
   var result;
   var currentRoom = "Grand_Foyer";
+  var disableCommands = false;
 
    $(function() {
        $('body').dialog(function(command) {
@@ -86,7 +95,9 @@
 	if (command === "Cancel") {
 		console.log("YES");
 	}
-    myFunction(result);
+    if (!disableCommands) {
+      myFunction(result);
+    }
   }, {
     cols: 60,
     rows: 20,
@@ -98,12 +109,7 @@
    });
 </script>
 
-<script src = "js/Functions.js"></script>
-<script src = "js/Parser.js"></script>
-<script src = "js/Item.js"></script>
-<script src = "js/Room.js"></script>
-<script src = "js/Person.js"></script>
-<script src = "js/TreeStruct.js"></script>
+
 
 </body>
 </html>

@@ -3,10 +3,13 @@ var givenInfo = false;
 var doneIntro = false;
 var givenHelp = false;
 
+var firstTimeFourthFloor = false;
+var noPiano = true;
+
 var evidenceFolder;
-var hasFoundKey = false;
 var hasMadeEvidence = false;
 var inEvidence = false;
+var hasFoundKey = false;
 var hasKey = false;
 var foundLetterFirst = false;
 var foundLetterSecond = false;
@@ -19,14 +22,16 @@ var hasTouchedPoolStick = false;
 var hasFoundVault = false;
 var hasCrackedVault = false;
 
+var openedTrapdoor = false;
 var justFinished = false;
+var beginCutScene = false;
 var justice = false;
 var resolution = false;
 
+var testUser;
+
 function myFunction(result) {
     var text = parseResult(result);
-    console.log(tree);
-
     document.getElementById("demo").innerHTML = text;
     }
 
@@ -57,17 +62,6 @@ function parseResult(result) {
         }
 
     }
-    // if (command != null) {
-    //     console.log(command);
-    // }
-    // if (tag != null) {
-    //     console.log(tag);
-    // }
-    // if (args != null) {
-    //     console.log(args);
-    // }
-
-    /*-----------------------------------*/
 
     output = executeCommands(command, tag, args);
 
@@ -79,12 +73,19 @@ function executeCommands(command, tag, args) {
     // Outputs room/story text
     var textOutput=''
     var storyOutput='';
-    if (givenHelp) {
+    if (givenHelp && !beginCutScene) {
       textOutput = associateCommands(command, tag, args);
     }
+
+    if ((command.localeCompare("rm") == 0) && (args[0].localeCompare("knife") == 0)) {
+      disableCommands = true;
+      clearTimeout(testUser);
+      execFinale(textOutput);
+    }
+
     // Do checkpoints
     if (!hasStarted) {
-      storyOutput = "Thanks for coming with such limited time, BASHet. I’m delighted that you can help me today." + '<br />';
+      storyOutput = "Thanks for coming with such short notice, BASHet. I’m delighted that you can help me today." + '<br />';
       hasStarted = true;
     }
     else if (!givenInfo) {
@@ -99,20 +100,21 @@ function executeCommands(command, tag, args) {
       storyOutput = "Type 'help' for the list of usable commands" + '<br />';
       givenHelp = true;
     }
+    else if (!noPiano) {
+      storyOutput = "You hear a beautiful melody echoing in the hallways.." + '<br />';
+      noPiano = true;
+    }
+    else if (hasLetterFirst && hasLetterSecond && hasCombination && !openedTrapdoor) {
+      storyOutput = "*NOTE* - If stuck, 'ls -a' may reveal more detail about a room" + '<br />';
+    }
+    else if (openedTrapdoor && !beginCutScene) {
+      disableCommands = true;
+      textOutput = "After unlocking the trapdoor, you see a woman in her 30s unconscious on the floor down below." + '<br />' + '<br />';
+      textOutput = textOutput + "As you process what you're looking at, the owner abruptly appears behind you.";
+      beginCutScene = true;
+      startCutScene();
+    }
 
-    else if (justFinished) {
-      storyOutput = "After unlocking the trapdoor, you see a woman in her 30s unconscious on the floor." + '<br />';
-    }
-    else if (justice) {
-      storyOutput = "You were able to fend off the owner and save everyone. You'll be sure he gets what he deserves" + '<br />';
-    }
-    else if (resolution) {
-      storyOutput = "Penelope thanks you from the bottom of her heart for freeing her from her husband's possessive grasp." + '<br />';
-      storyOutput = storyOutput + "Servant#3 expresses his gratitude for allowing them to live out their hapiness together." + '<br />';
-    }
-    else {
-      storyOutput = '';
-    }
     document.getElementById("storyteller").innerHTML = storyOutput;
 
 
@@ -125,16 +127,32 @@ function associateCommands(command, tag, args) {
     var parent = getParent(tree, currentRoom);
     var room = findRoom(currentRoom);
 
+    // Global trackers
+    if (hasMadeEvidence) {
+      var items = evidenceFolder.items;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
+          hasLetterFirst = true;
+        }
+        if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
+          hasLetterSecond = true;
+        }
+        if (items[i].name.localeCompare("Note") == 0) {
+          hasCombination = true;
+        }
+      }
+    }
+
     // Game Command Logic
     switch(command) {
         case "help":
-            output = output + "cd 'room_name' to enter a room, '..' to backtrack" + '<br />';
             output = output + "ls - display room's contents (rooms, people, items)" + '<br />';
-            output = output + "touch - inspect an item's properties" + '<br />';
-            output = output + "echo - 'person_name' to talk to that person" + '<br />';
-            output = output + "mkdir - 'folder_name' to create your evidence folder" + '<br />';
-            output = output + "mv - 'item_name' 'evidence_folder' to store findings" + '<br />';
-            output = output + "'item1' | 'item2' to use an item on another item" + '<br />';
+            output = output + "cd 'room_name' to enter a room, cd '..' to backtrack" + '<br />';
+            output = output + "touch 'item_name' inspect an item's properties" + '<br />';
+            output = output + "echo 'person_name' to talk to that person" + '<br />';
+            output = output + "mkdir 'folder_name' to create your evidence folder" + '<br />';
+            output = output + "mv 'item_name' 'evidence_folder' to store findings" + '<br />';
+            output = output + "'itemA' | 'itemB' to use an item on another item" + '<br />';
             output = output + "-------------------------------------------------------" + '<br />';
             output = output + "TAB - command line autocomplete (use generously)" + '<br />';
             break;
@@ -159,6 +177,14 @@ function associateCommands(command, tag, args) {
                     currentRoom = args[0];
                 }
               }
+            }
+            else if (args[0].localeCompare("Trapdoor") == 0) {
+              openedTrapdoor = true;
+            }
+            else if ((args[0].localeCompare("4th_Floor") == 0) && !firstTimeFourthFloor) {
+              firstTimeFourthFloor = true;
+              noPiano = false;
+              currentRoom = args[0];
             }
             // If cd attempt to any other room, verify valid room
             else {
@@ -191,6 +217,14 @@ function associateCommands(command, tag, args) {
             if (inEvidence) {
               inEvidence = false;
             }
+            if (tag) {
+              if (tag.localeCompare("-a") == 0) {
+                if (currentRoom.localeCompare("Wine_Cellar") == 0) {
+                  var trapDoor = new Item("Trapdoor", "Invisible at first glance from the dust all over it", "");
+                  room.items.push(trapDoor);
+                }
+              }
+            }
             var items = room.items;
             for (var i = 0; i < items.length; i++) {
                 output = output + '<span style="color:yellow">' + items[i].name + '</span>' + '<br />';
@@ -205,19 +239,13 @@ function associateCommands(command, tag, args) {
             if (hasMadeEvidence) {
                 output = output + '<br />' + '<span style="color:tan">' + evidenceFolder.name + '</span>' + '<br />';
             }
-
-            if (tag) {
-              if (tag.localeCompare("-l") == 0) {
-                console.log("FULL LS");
-              }
-            }
             break;
         case "touch":
             // Check to see if player is trying to touch evidence evidenceFolder
             if (hasMadeEvidence) {
               if (args[0]) {
                 if (args[0].localeCompare(evidenceFolder.name) == 0) {
-                  output = output + '<span style="color:red">' + "Cannot touch your evidence folder" + '</span>' + '<br />';
+                  output = output + '<span style="color:red">' + "It's just a folder." + '</span>' + '<br />';
                 }
               }
             }
@@ -251,7 +279,6 @@ function associateCommands(command, tag, args) {
                             output = output + '<span style="color:limegreen">' + "Doesn't feel very special" + '</span>' + '<br />';
                         }
                         else {
-
                             if ((items[i].name.localeCompare("Spring_Terror") == 0) && !hasFoundKey) {
                                 output = output + '<span style="color:limegreen">' + items[i].act + '</span>' + '<br />';
                                 var key = new Item("Key", "Seems like it unlocks something..", "Might be useful");
@@ -282,6 +309,9 @@ function associateCommands(command, tag, args) {
                               room.items.push(vault);
                               hasFoundVault = true;
                             }
+                            else if ((items[i].name.localeCompare("Trapdoor") == 0)) {
+                              output = output + "It's gonna take more than just a touch to get this open." + '<br />';
+                            }
                         }
                         break;
                     }
@@ -303,16 +333,7 @@ function associateCommands(command, tag, args) {
         var people = room.people;
         var person;
         var personName;
-        // var items = evidenceFolder.items;
-        //
-        // for (var i = 0; i < items.length; i++) {
-        //   if (items[i].name.localeCompare("Letter_FirstPiece") == 0) {
-        //     hasLetterFirst = true;
-        //   }
-        //   if (items[i].name.localeCompare("Letter_SecondPiece") == 0) {
-        //     hasLetterSecond = true;
-        //   }
-        // }
+
         if(args[0]) {
             for (var i = 0; i < people.length; i++) {
               if ((currentRoom.localeCompare("Servant#3_Room") == 0) && hasLetterFirst && hasLetterSecond) {
@@ -333,8 +354,6 @@ function associateCommands(command, tag, args) {
                     case "Servant#3":
                       document.getElementById("charsprite").src="images/butler.png";
                       break;
-                    default:
-                      return "";
                   }
               }
             }
@@ -377,18 +396,23 @@ function associateCommands(command, tag, args) {
 
             // Remove from current room
             if (item.localeCompare("Vault") != 0) {
-                var items = room.items;
-                for (var i = 0; i < items.length; i++) {
-                    if(item.localeCompare(items[i].name) == 0) {
-                        // Add to folder
-                        evidenceFolder.items.push(items[i]);
-                        room.items.splice(i,1);
+                if (args[1] && (args[1].localeCompare(evidenceFolder.name) == 0)) {
+                    var items = room.items;
+                    for (var i = 0; i < items.length; i++) {
+                        if(item.localeCompare(items[i].name) == 0) {
+                            // Add to folder
+                            evidenceFolder.items.push(items[i]);
+                            room.items.splice(i,1);
+                        }
                     }
-                  }
                 }
                 else {
-                  output = output + '<span style="color:red">' + "Cannot move the vault" + '</span>' + '<br />';
+                  output = output + "Where are you putting this?" + '<br />';
                 }
+            }
+            else {
+              output = output + '<span style="color:red">' + "Cannot move the vault" + '</span>' + '<br />';
+            }
             break;
 
         case "Key":
@@ -425,20 +449,17 @@ function associateCommands(command, tag, args) {
         case "33-05-76":
             if (currentRoom.localeCompare("Billard_Room") == 0) {
               if (foundCombination) {
-                  var items = evidenceFolder.items;
-                  for (var i = 0; i < items.length; i++) {
-                    if (items[i].name.localeCompare("Note") == 0) {
-                      hasCombination = true;
-                    }
-                  }
                   if (hasCombination) {
                     if ((args[0]) && (args[1])) {
                       if ((args[0].localeCompare("|") == 0) && (args[1].localeCompare("Vault") == 0)) {
                         output = output + "The vault cracks open loudly, revealing another key." + '<br />';
-                        var cellarKey = new Item("Wine_Cellar_Key", "An old rusty key. Does it even open anything?", "Who knows what this is for.");
+                        var cellarKey = new Item("WC_Key", "An old rusty key. Does it even open anything?", "Who knows what this is for.");
                         room.items.push(cellarKey);
                         hasCrackedVault = true;
                       }
+                    }
+                    else {
+                      output = output + "These are numbers." + '<br />';
                     }
                   }
                   else {
@@ -450,25 +471,81 @@ function associateCommands(command, tag, args) {
             }
             break;
 
+        case "Note":
+          output = output + "This is a note." + '<br />';
+          break;
+
         default:
             return '<span style="color:red">' + "Could not recognize command" + '</span>';
 
     }
-
-
     return output;
 }
 
-function findRoom(roomName) {
+function startCutScene() {
+  setTimeout(function(){
+    document.getElementById("storyteller").innerHTML = "Ha! So you figured it out! Unlucky for you now, I will have my revenge on all of you!";
+  }, 4000);
+  continueCutScene();
+}
 
+function continueCutScene() {
+  setTimeout(function(){
+      disableCommands = false;
+  }, 8000);
+  setTimeout(function(){
+      document.getElementById("demo").innerHTML = "The owner lunges at you!";
+      document.getElementById("storyteller").innerHTML = "Quick! Use 'rm knife' to disable his weapon!";
+  }, 8000);
+  testUserSpeed();
+}
+
+function testUserSpeed() {
+  testUser = setTimeout(function(){
+    disableCommands = true;
+    document.getElementById("demo").innerHTML = "Right before the knife would have pierced you in the chest, Servant#3 shows up in the nick of time and manages to throw a chair at the owner, allowing you to fend the attacker off and restrain him.";
+    document.getElementById("storyteller").innerHTML = "";
+    execSecondFinale();
+  }, 13000);
+}
+
+function execFinale() {
+  disableCommands = true;
+  setTimeout(function(){
+    document.getElementById("demo").innerHTML = "With your quick reflexes, you are able to disarm the attacker and easily restrain him!";
+  }, 1000);
+  setTimeout(function(){
+    document.getElementById("demo").innerHTML = "The chaos dims down, and you have the situation under control once again." + '<br />';
+  }, 5000);
+  setTimeout(function() {
+    document.getElementById("demo").innerHTML = "Penelope thanks you from the bottom of her helping her get rid of her husband's possessive grasp." + '<br />' + '<br />'
+    + "Servant#3 expresses his gratitude for allowing them to live out their hapiness together." + '<br />';
+  }, 8000);
+  setTimeout(function() {
+    document.getElementById("demo").innerHTML = "Congratulations! <br /> Welcome to BASH";
+  }, 14000);
+}
+
+function execSecondFinale() {
+  setTimeout(function(){
+    document.getElementById("demo").innerHTML = "The chaos dims down, and you have the situation under control once again." + '<br />';
+  }, 8000);
+  setTimeout(function() {
+    document.getElementById("demo").innerHTML = "Penelope thanks you from the bottom of her helping her get rid of her husband's possessive grasp." + '<br />' + '<br />'
+    + "Servant#3 expresses his gratitude for allowing them to live out their hapiness together." + '<br />';
+  }, 11000);
+  setTimeout(function() {
+    document.getElementById("demo").innerHTML = "Congratulations! <br /> Welcome to BASH";
+  }, 15000);
+}
+
+function findRoom(roomName) {
     for(var i = 0; i < house.length; i++) {
         if (house[i].name.localeCompare(roomName) == 0) {
             return house[i];
         }
     }
-
     return null;
-
 }
 
 function verifyChild(childRoom, children) {
@@ -477,7 +554,6 @@ function verifyChild(childRoom, children) {
             return true;
         }
     }
-
     return false;
 }
 
@@ -488,12 +564,10 @@ function stringMatch(part, full) {
     if (charPart.length == 0) {
         return "";
     }
-
     for (var i = 0; i < charPart.length; i++){
         if(charPart[i] != charFull[i]) {
             return "";
         }
     }
-
     return full.substr(i);
 }
