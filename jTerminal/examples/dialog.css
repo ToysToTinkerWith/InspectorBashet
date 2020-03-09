@@ -7,8 +7,25 @@
  *
  * Linceses under MIT license
  */
+ html {
+  background: url(../../images/D5l7mE.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#charsprite{
+  background:black;
+  border-color:#AAAAAA;
+  border-width:thick;
+  border-style:solid;
+  left:63.9%;
+  top:66.8%;
+  position:absolute;
+}
  #fileInput{
-   left:24.5%;
+   left: 46%;
+   right: 50%;
    top:10%;
    position:absolute;
  }
@@ -17,12 +34,11 @@
 }
  #bashet-sprite{
    position:absolute;
-   top:-22%;
-   left:50%;
-   width:40%;
+   top:0;
+   left:27%;
+   width:8%;
    height:auto;
    /* box-shadow: 10px 10px 5px grey; */
-
  }
 
  #demo{
@@ -41,10 +57,10 @@
  #storyteller{
    position:absolute;
    background-color: #000;
-   width:47.55%;
-   height:15%;
+   width:37.5%;
+   height:15.3%;
    left:25.55%;
-   top:65.5%;
+   top:65.2%;
    border-style:solid;
    color:cyan;
    border-color: #AAAAAA;
