@@ -516,6 +516,7 @@ function associateCommands(command, tag, args, storyOutput) {
 }
 
 function startCutScene() {
+  document.getElementById("charsprite").src="images/gertrude_aggressive.png";
   setTimeout(function(){
     document.getElementById("storyteller").innerHTML = '<span style="color:red">' + "Ha! So you figured it out! Unlucky for you now, I will have my revenge on all of you!" + '</span>';
   }, 4000);
@@ -543,6 +544,7 @@ function testUserSpeed() {
 }
 
 function execFinale() {
+  document.getElementById("charsprite").src="images/Black.png";
   disableCommands = true;
   setTimeout(function(){
     document.getElementById("demo").innerHTML = '<span style="color:red">' + "With your quick reflexes, you are able to disarm the attacker and easily restrain him!" + '</span>';
@@ -560,6 +562,7 @@ function execFinale() {
 }
 
 function execSecondFinale() {
+  document.getElementById("charsprite").src="images/Black.png";
   setTimeout(function(){
     document.getElementById("demo").innerHTML = "The chaos dims down, and you have the situation under control once again." + '<br />';
   }, 8000);
