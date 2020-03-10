@@ -180,7 +180,7 @@
             <activation> none </activation>
         </item>
         <item>
-            <name>Cushioned_bench</name>
+            <name>Cushioned_Bench</name>
             <description> A wooden bench padded with a red velvet cushion. </description>
             <activation> none </activation>
         </item>
