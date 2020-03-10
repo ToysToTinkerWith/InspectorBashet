@@ -29,7 +29,7 @@
   grid-template-columns: 680px 200px;
   grid-template-rows: 400px 200px 300px;
   position:absolute;
-  top:55%;
+  top:52%;
   transform: translate(-50%, -50%);
   left: 50%;
 
@@ -61,7 +61,7 @@
  #fileInput{
    left: 46%;
    right: 50%;
-   top:10%;
+   top:8%;
    position:absolute;
  }
  #bashet-sprite{
@@ -133,7 +133,7 @@
     float: left;
     position: absolute;
 
-    bottom:-10%;
+    bottom:-7%;
     left: 50%;
     /* box-shadow: 10px 10px 5px grey; */
 

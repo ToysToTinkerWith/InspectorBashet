@@ -77,7 +77,7 @@ function executeCommands(command, tag, args) {
     textOutput = '';
     storyOutput = '';
     if (givenHelp && !beginCutScene) {
-      textOutput = associateCommands(command, tag, args, storyOutput);
+      textOutput = associateCommands(command, tag, args);
     }
 
     if ((command.localeCompare("rm") == 0) && (args[0].localeCompare("knife") == 0)) {
@@ -120,11 +120,10 @@ function executeCommands(command, tag, args) {
     console.log(storyOutput);
     document.getElementById("storyteller").innerHTML = storyOutput;
 
-
     return textOutput;
 }
 
-function associateCommands(command, tag, args, storyOutput) {
+function associateCommands(command, tag, args) {
     var output = "";
     var children = getChildren(tree, currentRoom);
     var parent = getParent(tree, currentRoom);
@@ -364,12 +363,8 @@ function associateCommands(command, tag, args, storyOutput) {
                 // Print nothing
               }
               else if(args[0].localeCompare(people[i].name) == 0) {
-                // TRY TO GET DIALOG ON BOTTOM PANEL
                   output = output + people[i].descript + '<br />';
-                  storyOutput = people[i].dia + '<br />' + '<br />';
-                  console.log(document.getElementById("storyteller").innerHTML);
-                  //
-                  person = people[i];
+                  storyOutput = people[i].dia;
                   personName = people[i].name;
                   switch(personName) {
                     case "Maid":
@@ -516,8 +511,8 @@ function associateCommands(command, tag, args, storyOutput) {
 }
 
 function startCutScene() {
-  document.getElementById("charsprite").src="images/gertrude_aggressive.png";
   setTimeout(function(){
+    document.getElementById("charsprite").src="images/gertrude_aggressive.png";
     document.getElementById("storyteller").innerHTML = '<span style="color:red">' + "Ha! So you figured it out! Unlucky for you now, I will have my revenge on all of you!" + '</span>';
   }, 4000);
   continueCutScene();
@@ -547,7 +542,7 @@ function execFinale() {
   document.getElementById("charsprite").src="images/Black.png";
   disableCommands = true;
   setTimeout(function(){
-    document.getElementById("demo").innerHTML = '<span style="color:red">' + "With your quick reflexes, you are able to disarm the attacker and easily restrain him!" + '</span>';
+    document.getElementById("demo").innerHTML = '<span style="color:red">' + '<br />' + "With your quick reflexes, you are able to disarm the attacker and easily restrain him!" + '</span>';
   }, 1000);
   setTimeout(function(){
     document.getElementById("demo").innerHTML = "The chaos dims down, and you have the situation under control once again." + '<br />';

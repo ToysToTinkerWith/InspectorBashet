@@ -9,12 +9,12 @@
     <room name = "Wine_Cellar">
         <item>
             <name>Wine_Shelf</name>
-            <description> The entire wall is covered in dusty wine bottles, none of them open </description>
-            <activation> You don’t have a cork popper </activation>
+            <description> The entire wall is covered in dusty wine bottles, none of them open. </description>
+            <activation> none </activation>
         </item>
         <item>
              <name>Painting</name>
-            <description> Sir Gerald the first of his name, in all his glory </description>
+            <description> Sir Gerald the first of his name, in all his glory. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -22,23 +22,23 @@
     <room name = "Kitchen">
         <item>
             <name>Butchers_Knife</name>
-            <description> A stainless steel knife used by butchers </description>
+            <description> A stainless steel knife used by butchers. </description>
             <activation> none </activation>
         </item>
         <item>
              <name>Butternut_Squash_Recipe</name>
-            <description> "A recipe to make a delicious meal" </description>
+            <description> A recipe to make a delicious meal. </description>
             <activation> "none" </activation>
         </item>
          <item>
             <name>Chefs_Hat</name>
-            <description> A hat owned by a renowned chef </description>
+            <description> A hat owned by a renowned chef. </description>
             <activation> none </activation>
         </item>
         <person>
              <name>Head_Chef_Jerald</name>
-             <description> The only man in the world to have earned 4 Michelin stars </description>
-            <dialog> "Good thing you’re not the health inspector! BAHAHA" </dialog>
+             <description> The only man in the world to have earned 4 Michelin stars. </description>
+            <dialog> "Good thing you’re not the health inspector! BAHAHA!" </dialog>
         </person>
     </room>
 
@@ -50,25 +50,25 @@
         </item>
         <person>
             <name>Maid</name>
-            <description> From dusting to vacuuming, maids are professionals hired to keep home </description>
-            <dialog> "We would talk often about her paintings. I know she really liked ‘Spring Terror’" </dialog>
+            <description> From dusting to vacuuming, maids are professionals hired to keep homes tidy. </description>
+            <dialog> We would talk often about her paintings. I know she really liked ‘Spring Terror’. </dialog>
         </person>
     </room>
 
     <room name = "Bedroom">
         <item>
             <name>Bed</name>
-            <description> An elaborate king sized bed with a polished wood frame </description>
-            <activation> Under the bed is a small note with some numbers on it </activation>
+            <description> An elaborate king sized bed with a polished wood frame. </description>
+            <activation> Under the bed is a small note with some numbers on it. </activation>
         </item>
         <item>
             <name>Dresser</name>
-            <description> An exquisite Mahogany dresser with not a speck of dust </description>
+            <description> An exquisite Mahogany dresser with not a speck of dust. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Shoe_rack</name>
-            <description> A multi-level shoe rack containing a diverse spectrum of novelty cowboy boots </description>
+            <description> A multi-level shoe rack containing a diverse spectrum of novelty cowboy boots. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -76,17 +76,17 @@
     <room name = "Study">
         <item>
             <name>Desk</name>
-            <description> A hard wood writing desk topped with quality parchment</description>
+            <description> A hard wood writing desk topped with quality parchment. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Bookshelf</name>
-            <description> A tall wooden bookshelf containing works of all subject matters </description>
+            <description> A tall wooden bookshelf containing works of all subject matters. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Chair</name>
-            <description> A comfortable looking black leather chair </description>
+            <description> A comfortable looking black leather chair. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -94,12 +94,12 @@
     <room name = "Dressing_Room">
         <item>
             <name>Clothing_Rack</name>
-            <description> A long metallic clothing rack lined with countless articles of designer clothing </description>
+            <description> A long metallic clothing rack lined with countless articles of designer clothing. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Vanity_Table_Set</name>
-            <description> A wooden vanity table with a round mirror and cushioned stool </description>
+            <description> A wooden vanity table with a round mirror and cushioned stool. </description>
             <activation> none </activation>
         </item>
         <item>
@@ -109,7 +109,7 @@
         </item>
         <item>
             <name>Clothed_Mannequin</name>
-            <description> A female mannequin showcasing an oversized fur coat</description>
+            <description> A female mannequin showcasing an oversized fur coat. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -117,17 +117,17 @@
     <room name = "Armory">
         <item>
             <name>Suit_of_Armor</name>
-            <description> A full set of shiny silver plate armor from the renaissance period </description>
+            <description> A full set of shiny silver plate armor from the renaissance period. </description>
             <activation> none </activation>
         </item>
             <item>
             <name>Diamond_Halberd</name>
-            <description> A decorative reconstruction of a two-handed pole weapon from the 15th century </description>
+            <description> A decorative reconstruction of a two-handed pole weapon from the 15th century. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>M60_Machine_Gun</name>
-            <description> A heavy machine gun loaded with armor-piercing rounds </description>
+            <description> A heavy machine gun loaded with armor-piercing rounds. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -135,17 +135,17 @@
     <room name = "Shooting_Range">
         <item>
             <name>Kar98k_Marksman_Rifle</name>
-            <description> An antique looking marksman rifle with a wooden stock </description>
+            <description> An antique looking marksman rifle with a wooden stock. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Wall_Mounted_Paper_Target</name>
-            <description> Whoever was shooting this target got several bullseyes </description>
+            <description> Whoever was shooting this target got several bullseyes. </description>
             <activation> As you take a closer look, you find a piece of paper with holes, pinned on the target. </activation>
         </item>
         <item>
             <name>Ammunition_box</name>
-            <description> Metallic ammunitions box painted military green </description>
+            <description> Metallic ammunitions box painted military green. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -153,22 +153,22 @@
     <room name = "Gallery">
         <item>
             <name>Autumn_Dance</name>
-            <description> Colored leaves spinning in the stormy winds </description>
+            <description> Colored leaves spinning in the stormy winds. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Spring_Terror</name>
-            <description> A couple running from a forest fire</description>
+            <description> A couple running from a forest fire. </description>
             <activation> As you look at this painting, you notice it's not quite flat on the wall. You inspect behind and a key falls off the back. </activation>
         </item>
         <item>
             <name>Summer_Veil</name>
-            <description> An early sunrise shining over the mountain sky </description>
+            <description> An early sunrise shining over the mountain sky. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Came_the_Winter</name>
-            <description> A family of deer finding refuge from a blizzard </description>
+            <description> A family of deer finding refuge from a blizzard. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -181,7 +181,7 @@
         </item>
         <item>
             <name>Cushioned_bench</name>
-            <description> A wooden bench padded with a red velvet cushion </description>
+            <description> A wooden bench padded with a red velvet cushion. </description>
             <activation> none </activation>
         </item>
         <person>
@@ -194,22 +194,22 @@
     <room name = "Billard_Room">
         <item>
             <name>Pool_Table</name>
-            <description> A standard pool table, green felt and six holes </description>
+            <description> A standard pool table, green felt and six holes. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Beer</name>
-            <description> Yup, that's beer in a mug alright </description>
+            <description> Yup, that's beer in a mug alright. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Stick#1</name>
-            <description> Simple wooden pool stick </description>
+            <description> Simple wooden pool stick. </description>
             <activation> none </activation>
         </item>
         <item>
             <name>Stick#2</name>
-            <description> Simple wooden pool stick </description>
+            <description> Simple wooden pool stick. </description>
             <activation> none </activation>
         </item>
         <item>
@@ -222,7 +222,7 @@
     <room name = "Butler_Room">
         <item>
             <name>Sleeping_Bag</name>
-            <description> A cozy place for the servant to sleep </description>
+            <description> A cozy place for the servant to sleep. </description>
             <activation> none </activation>
         </item>
     </room>
@@ -230,7 +230,7 @@
     <room name = "Servant#2_Room">
         <item>
             <name>Sleeping_Bag</name>
-            <description> A cozy place for the servant to sleep </description>
+            <description> A cozy place for the servant to sleep. </description>
             <activation> none </activation>
         </item>
         <person>
@@ -243,12 +243,12 @@
     <room name = "Servant#3_Room">
         <item>
             <name>Sleeping_Bag</name>
-            <description> A cozy place for the servant to sleep </description>
+            <description> A cozy place for the servant to sleep. </description>
             <activation> none </activation>
         </item>
         <person>
             <name>Servant#3</name>
-            <description> A nice-looking fellow who looks like he just got out of bed </description>
+            <description> A nice-looking fellow who looks like he just got out of bed. </description>
             <dialog> Didn't hear you come in! </dialog>
         </person>
     </room>
@@ -256,7 +256,7 @@
     <room name = "Maid_Room">
         <item>
             <name>Sleeping_Bag</name>
-            <description> A cozy place for the maid to sleep </description>
+            <description> A cozy place for the maid to sleep. </description>
             <activation> none </activation>
         </item>
     </room>
