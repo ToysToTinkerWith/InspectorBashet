@@ -28,7 +28,7 @@
         <item>
              <name>Butternut_Squash_Recipe</name>
             <description> A recipe to make a delicious meal. </description>
-            <activation> "none" </activation>
+            <activation> none </activation>
         </item>
          <item>
             <name>Chefs_Hat</name>
@@ -38,7 +38,7 @@
         <person>
              <name>Head_Chef_Jerald</name>
              <description> The only man in the world to have earned 4 Michelin stars. </description>
-            <dialog> "Good thing you’re not the health inspector! BAHAHA!" </dialog>
+            <dialog> Good thing you’re not the health inspector! BAHAHA! </dialog>
         </person>
     </room>
 

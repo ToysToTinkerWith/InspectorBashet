@@ -59,10 +59,9 @@
   margin-top:26.4px;
 }
  #fileInput{
-   left: 46%;
-   right: 50%;
+   right: 0%;
    top:8%;
-   position:absolute;
+   position: absolute;
  }
  #bashet-sprite{
    position:absolute;
